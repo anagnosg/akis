@@ -26,6 +26,8 @@ public class Functions1 {
 		return output;
 	}
 	
+	
+	
 	public static void main(String[] args) {
 		int i = 1;
 		int k = 2;
