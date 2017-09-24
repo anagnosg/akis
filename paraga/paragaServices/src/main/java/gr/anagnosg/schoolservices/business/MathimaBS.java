@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import gr.anagnosg.employeeservices.db.utils.ConnectionWrapper;
 import gr.anagnosg.schooleservices.db.ClassDB;
 import gr.anagnosg.schooleservices.db.MathimaDB;
-import gr.anagnosg.schoolservices.models.Mathima;
+import gr.anagnosg.schoolservices.models.Person;
 
 @RequestScoped
 public class MathimaBS {
@@ -21,8 +21,8 @@ public class MathimaBS {
 		MathimaDB mathimaDB;
 		@Inject 
 		ClassDB skillDB;
-		public List<Mathima> selectMathimaAll() throws SQLException{
-			List<Mathima> mathima  ;
+		public List<Person> selectMathimaAll() throws SQLException{
+			List<Person> mathima  ;
 		
 			mathima = mathimaDB.selectAll();
 			 
@@ -30,30 +30,30 @@ public class MathimaBS {
 		}
 		
 		
-		public Mathima insert(Mathima mathima) throws SQLException{
+		public Person insert(Person mathima) throws SQLException{
 			
 			return mathimaDB.insert(mathima);
 		}
 		
-		public Mathima update(Mathima mathima) throws SQLException{
+		public Person update(Person mathima) throws SQLException{
 		
 			return mathimaDB.update(mathima);
 		}
 		
 		
-		public Mathima delete(Mathima mathima) throws SQLException{
+		public Person delete(Person mathima) throws SQLException{
 			
 			return mathimaDB.delete(mathima);
 		}
 
 		public MathimaBS(){}
 		
-		public List<Mathima> selectMathimaAllDummy() throws SQLException{
-			List<Mathima> mathimataki = null; // Ορισμός λίστας μαθητών.
-			mathimataki = new ArrayList<Mathima>();
+		public List<Person> selectMathimaAllDummy() throws SQLException{
+			List<Person> mathimataki = null; // Ορισμός λίστας μαθητών.
+			mathimataki = new ArrayList<Person>();
 			
 			//Ορισμός δυο αντικειμένων μαθητών Students  kai pro8hkh sthn lista. 
-			Mathima math = new Mathima(); //Orismos antikeimenou me onoma ag kai klash Student; Arxikopoihsh tou
+			Person math = new Person(); //Orismos antikeimenou me onoma ag kai klash Student; Arxikopoihsh tou
 			math.setId(1);
 			math.setName("Istoria");
 			mathimataki.add(math);
@@ -64,8 +64,8 @@ public class MathimaBS {
 		
 		
 		
-		public List<Mathima> selectmathimaAll() throws SQLException{
-			List<Mathima> mathimataki  ;
+		public List<Person> selectmathimaAll() throws SQLException{
+			List<Person> mathimataki  ;
 		
 			mathimataki = mathimaDB.selectAll();
 			 
