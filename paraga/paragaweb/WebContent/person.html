@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"> 
+<title>Person</title>
+<link rel="stylesheet" type="text/css" href="./css/style.css"> <!-- insert ena stylesheet -->
+<link rel="stylesheet" type="text/css" href="./css/menu.css">
+<link rel="stylesheet" href="./js/jquery-ui/jquery-ui.min.css">
+<script src="./js/jquery-ui/external/jquery/jquery.js"></script>
+<script src="./js/jquery-ui/jquery-ui.min.js"></script>
+<link type="text/css" rel="stylesheet" href="./js/jsgrid/jsgrid.min.css" />
+<link type="text/css" rel="stylesheet"
+	href="./js/jsgrid/jsgrid-theme.min.css" />
+<script type="text/javascript" src="./js/jsgrid/jsgrid.min.js"></script>
+<script type="text/javascript"
+	src="./js/jvalidation/jquery.validate.min.js"></script>
+<script type="text/javascript"
+	src="./js/w3.js"> </script>
+<!-- <link rel="stylesheet" type="text/css" href="./js/token-input.css" /> -->
+
+<!-- <script src="./js/jquery.tokeninput.js" type="text/javascript" charset="utf-8">  -->
+<script> 
+
+//Autos o kodikas einai javascript 
+
+//var grid ;
+	var host='localhost:8080';
+    $(document).ready(function(){ // xrhsimopoioume thn biblio8hkh jquery-ui.min.js kai auth h entolh sumainei otan einai fortomenh h selida ektelese 
+        //ton akolou8o javascript kodika.
+
+    	
+
+
+    	$("#jsGrid").jsGrid({
+            height: "auto",
+            width: "80%",
+            selecting: true,
+            sorting: true,
+            paging: false,
+            autoload: true,
+            
+            controller: {
+                loadData: function() {
+                    var d = $.Deferred();
+     
+                    $.ajax({
+                        url: "http://"+host+"/paraga/api/person/all",
+                        dataType: "json"
+                    }).done(function(response) {
+                        d.resolve(response.data);
+                    });
+     
+                    return d.promise();
+                }
+        		 
+            },
+     
+            fields: [
+				{ title:'A/A', name: "id", type: "text" , key:true, width: 10 },
+                { title:'Όνομα',name: "name", type: "text" , width: 50},
+                {
+                    type: "control",
+                    modeSwitchButton: false,
+                    editButton: false,
+                    headerTemplate: function() {
+                        return $("<button>").attr("type", "button").text("Add")
+                                .on("click", function () {
+                                    showDetailsDialog("Add", {});
+                                });
+                    }
+                }
+            ]
+        });
+    
+    	 
+
+  	  
+    });
+    
+</script>
+
+
+ 
+<script>
+
+<script> 
+
+</script> 
+</head> 
+
+</script>
+</head>
+<body>
+	<div>
+
+		<div class="box">
+
+			<div class="logo">
+				 
+			</div>
+			<div>
+				<h2> Μάθηματα </h2>
+			</div>
+			
+			
+			
+			<div class="content">
+				<div id="includedContent"></div>
+				<div class="outer">
+					<div class="inner" id="jsGrid"></div>
+
+				</div>
+
+
+				
+			</div>
+
+
+		</div>
+
+	</div>
+
+</body>
+</html>
