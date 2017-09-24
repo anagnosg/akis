@@ -14,7 +14,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import gr.anagnosg.schoolservices.business.MathimaBS;
-import gr.anagnosg.schoolservices.models.Mathima;
+import gr.anagnosg.schoolservices.models.Person;
 import gr.anagnosg.schoolservices.models.ResponseModel;
 import gr.anagnosg.utis.GsonUtils;
 import io.swagger.annotations.Api;
@@ -39,7 +39,7 @@ import io.swagger.annotations.Api;
 		public Response all() {
 			
 			//Το E του response Model είναι μια λίστα απο student , List<Student>
-			ResponseModel<List<Mathima>> rep = new ResponseModel<List<Mathima>>(); // Orismos antikeimenou rep
+			ResponseModel<List<Person>> rep = new ResponseModel<List<Person>>(); // Orismos antikeimenou rep
 			try { // To try catch einai ena komati kodika sto opoio leme to ekshs.
 				//pros8hse na ekteleseis tis entoles pou briskontai sto body tou try kai 
 				//an submei kapoio la8os ektelese to kattalhlo catch.
@@ -49,7 +49,7 @@ import io.swagger.annotations.Api;
 				//o tupos ths (klash) einai List (lista) apo Student.
 				//Kaloume apo to antikeimeno studentBS thn methodo selectStudentsAl. H opoia epistrefei 
 				//olous tous mathites.
-				List<Mathima> listmathimataki = mathimaBS.selectmathimaAll(); 
+				List<Person> listmathimataki = mathimaBS.selectmathimaAll(); 
 				//sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
 				rep.setData(listmathimataki);
 				LOG.info("End all");
@@ -67,10 +67,10 @@ import io.swagger.annotations.Api;
 		@Path("/insert")  //Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
 		@Consumes("application/json")
 		@Produces("application/json")
-		public Response insert(Mathima mathima) {
+		public Response insert(Person mathima) {
 			
 			 
-			ResponseModel<Mathima> rep = new ResponseModel<Mathima>(); // Orismos antikeimenou rep
+			ResponseModel<Person> rep = new ResponseModel<Person>(); // Orismos antikeimenou rep
 			try {  
 				 
 				mathima = mathimaBS.insert(mathima); 
@@ -91,10 +91,10 @@ import io.swagger.annotations.Api;
 		@Path("/update")  //Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
 		@Consumes("application/json")
 		@Produces("application/json")
-		public Response update(Mathima mathima) {
+		public Response update(Person mathima) {
 			
 			 
-			ResponseModel<Mathima> rep = new ResponseModel<Mathima>(); // Orismos antikeimenou rep
+			ResponseModel<Person> rep = new ResponseModel<Person>(); // Orismos antikeimenou rep
 			try {  
 				 
 				mathima = mathimaBS.update(mathima); 
@@ -114,10 +114,10 @@ import io.swagger.annotations.Api;
 		@Path("/delete")  //Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
 		@Consumes("application/json")
 		@Produces("application/json")
-		public Response delete(Mathima mathima) {
+		public Response delete(Person mathima) {
 			
 			 
-			ResponseModel<Mathima> rep = new ResponseModel<Mathima>(); // Orismos antikeimenou rep
+			ResponseModel<Person> rep = new ResponseModel<Person>(); // Orismos antikeimenou rep
 			try {  
 				 
 				mathima = mathimaBS.delete(mathima); 

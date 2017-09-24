@@ -12,7 +12,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import gr.anagnosg.employeeservices.db.utils.ConnectionWrapper;
-import gr.anagnosg.schoolservices.models.Mathima;
+import gr.anagnosg.schoolservices.models.Person;
 
 
 @RequestScoped
@@ -30,8 +30,8 @@ import gr.anagnosg.schoolservices.models.Mathima;
 		 * @return
 		 * @throws SQLException
 		 */
-		public List<Mathima> selectAll() throws SQLException {
-			List<Mathima> mathimataki = new ArrayList<Mathima>();
+		public List<Person> selectAll() throws SQLException {
+			List<Person> mathimataki = new ArrayList<Person>();
 			;
 			String sql = "SELECT  ID , NAME ";
 
@@ -39,7 +39,7 @@ import gr.anagnosg.schoolservices.models.Mathima;
 					ResultSet rs = pstate.executeQuery();) {
 				while (rs.next()) {
 
-					Mathima mathima = new Mathima();
+					Person mathima = new Person();
 					mathima.setId(rs.getInt("ID"));
 					mathima.setName(rs.getString("NAME"));
 					mathimataki.add(mathima);
@@ -48,7 +48,7 @@ import gr.anagnosg.schoolservices.models.Mathima;
 			return mathimataki;
 		}
 
-		public Mathima insert(Mathima math) throws SQLException {
+		public Person insert(Person math) throws SQLException {
 
 			String sql = "INSERT INTO MATHIMA   (NAME) " + " VALUES (?)"; //orismoume se ena string thn sql pou 8a treksoume 
 
@@ -81,7 +81,7 @@ import gr.anagnosg.schoolservices.models.Mathima;
 			return math;
 		}
 
-		public Mathima update(Mathima math) throws SQLException {
+		public Person update(Person math) throws SQLException {
 
 			String sql = "update Mathima set name=?  where id = ?  ";
 
@@ -99,7 +99,7 @@ import gr.anagnosg.schoolservices.models.Mathima;
 			return null;
 		}
 		
-		public Mathima delete (Mathima math) throws SQLException {
+		public Person delete (Person math) throws SQLException {
 			int count  = 0;
 			String sql = "  delete from Mathites where id = ?      ";
 			try (PreparedStatement pstate = this.connWrapper.getConnection().prepareStatement(sql );) {
