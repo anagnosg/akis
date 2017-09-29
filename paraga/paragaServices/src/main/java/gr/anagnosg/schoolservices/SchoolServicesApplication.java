@@ -12,7 +12,7 @@ import javax.ws.rs.core.Application;
 
 import gr.anagnosg.employeeservices.config.Settings;
 import gr.anagnosg.schoolservices.api.ClassResource;
-import gr.anagnosg.schoolservices.api.MathimaResource;
+
 import gr.anagnosg.schoolservices.api.StudentResource;
 import gr.anagnosg.schoolservices.api.TeacherResource;
 import io.swagger.jaxrs.config.BeanConfig;
