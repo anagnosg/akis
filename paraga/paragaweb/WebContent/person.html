@@ -167,7 +167,7 @@ $.ajax({
 			data : JSON.stringify(dataPost),
 			dataType: "json",
       success: function(result){ //otan oloklhro8ei h klh tou ajax ekteleitai location.reload(); 
-      	location.reload();  /// fortonei thn selida apo thn arxi.
+      	location.reload();  // fortonei thn selida apo thn arxi.
 	},
 	error:function(result){
 		debugger;
@@ -248,6 +248,10 @@ $("#detailsDialog").dialog("close");
 			<div class="details-form-field">
 				<button type="submit" id="save">Αποθήκευση</button>
 			</div>
+			<div class="details-form-field">
+				<button type="submit" id="delete">Διαγραφή</button>
+			</div>
+			
 		</form>
 	</div>
 	<!-- END detailsDialog -->
