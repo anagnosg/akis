@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8"> 
+<meta charset="UTF-8">
 <title>Person</title>
-<link rel="stylesheet" type="text/css" href="./css/style.css"> <!-- insert ena stylesheet -->
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+<!-- insert ena stylesheet -->
 <link rel="stylesheet" type="text/css" href="./css/menu.css">
 <link rel="stylesheet" href="./js/jquery-ui/jquery-ui.min.css">
 <script src="./js/jquery-ui/external/jquery/jquery.js"></script>
@@ -14,8 +15,7 @@
 <script type="text/javascript" src="./js/jsgrid/jsgrid.min.js"></script>
 <script type="text/javascript"
 	src="./js/jvalidation/jquery.validate.min.js"></script>
-<script type="text/javascript"
-	src="./js/w3.js"> </script>
+<script type="text/javascript" src="./js/w3.js"> </script>
 <!-- <link rel="stylesheet" type="text/css" href="./js/token-input.css" /> -->
 
 <!-- <script src="./js/jquery.tokeninput.js" type="text/javascript" charset="utf-8">  -->
@@ -37,8 +37,37 @@
             sorting: true,
             paging: false,
             autoload: true,
-            
-            controller: {
+            rowClick: function(args) {// Auto  ekteleitai otan epileksoume mia grammh
+				//emfanizei to dialog ths pros8hkhs
+				//xrhsopoieitai gia na kanoume update.
+				gaction = 'update';
+				//args.item
+				$("#id").val($.trim(args.item.id));
+				$("#name").val($.trim(args.item.name));
+	  	        $("#surname").val($.trim(args.item.surname));
+	  	      	$("#age").val($.trim(args.item.age));
+	  	        $("#address").val($.trim(args.item.address));
+	  	        $("#points").val($.trim(args.item.points));
+  	      	
+            	$("#detailsDialog").dialog("option", "title", "Person")
+	                .dialog("open"); 
+                },  
+              deleteItem: function(item) {
+    			   var data = JSON.stringify(item);
+    	            return $.ajax({
+    	            type: "DELETE",
+    	            dataType: "json",
+    	            contentType: "application/json",
+    	            url: "http://"+host+"/paraga/api/person/delete",
+    	            data: data
+    	            ,
+    		        success: function(result){ //otan oloklhro8ei h klh tou ajax ekteleitai location.reload(); 
+    		        	location.reload();  /// fortonei thn selida apo thn arxi.
+    	      		}
+    	        });
+    	    },
+
+                controller: {
                 loadData: function() {
                     var d = $.Deferred();
      
@@ -87,12 +116,12 @@
 </script>
 
 
- 
+
 <script>
 
 
 
-</script> 
+</script>
 
 <script>
 //Edo orizetai to dialog.
@@ -106,12 +135,53 @@ $(document).ready(function(){ // jquery. To antikeimeno document exei mia sunart
 	         $("#detailsForm").validate().resetForm();
 	         $("#detailsForm").find(".error").removeClass("error");
 	     }
-	 }); 
+	 });  
 
 });
 </script>
+<script>
+var gaction = 'insert';
+$(document).ready(function(){
+	 $("#detailsForm").validate({
+		 submitHandler: function() {
+	        	savePerson();
+	        }
+	    });
+});
+function   savePerson (   ) {
+	 var dataPost {
+		 "id":$("#id").val(),
+     	"name":$("#name").val(),
+       	"surname":$("#surname").val(),
+       	"age":$("#age").val(),
+       	"address":$("#address").val(),
+       	"points":$("#points").val()     	 
+};
 
-</head> 
+var action = gaction;
+	 
+$.ajax({
+      url: "http://"+host+"/paraga/api/person/"+action,
+			type:"POST",
+			contentType: "application/json",
+			data : JSON.stringify(dataPost),
+			dataType: "json",
+      success: function(result){ //otan oloklhro8ei h klh tou ajax ekteleitai location.reload(); 
+      	location.reload();  /// fortonei thn selida apo thn arxi.
+	},
+	error:function(result){
+		debugger;
+		alert('Internal Server Error.'+result.responseJSON.message);
+	    }
+});
+$("#detailsDialog").dialog("close");
+};
+
+
+
+</script>
+
+</head>
 
 </script>
 </head>
@@ -120,15 +190,13 @@ $(document).ready(function(){ // jquery. To antikeimeno document exei mia sunart
 
 		<div class="box">
 
-			<div class="logo">
-				 
-			</div>
+			<div class="logo"></div>
 			<div>
-				<h2> Person</h2>
+				<h2>Person</h2>
 			</div>
-			
-			
-			
+
+
+
 			<div class="content">
 				<div id="includedContent"></div>
 				<div class="outer">
@@ -137,7 +205,7 @@ $(document).ready(function(){ // jquery. To antikeimeno document exei mia sunart
 				</div>
 
 
-				
+
 			</div>
 
 
@@ -153,18 +221,27 @@ $(document).ready(function(){ // jquery. To antikeimeno document exei mia sunart
 
 		<form id="detailsForm" novalidate="novalidate">
 			<div class="details-form-field">
-				<input id="id" name="id" type="hidden"> <!--  den emfanizetai ston xrhsh kai to xrhsimopoioume gia to id ths eggrafhs sto update -->
+				<input id="id" name="id" type="hidden">
+				<!--  den emfanizetai ston xrhsh kai to xrhsimopoioume gia to id ths eggrafhs sto update -->
 			</div>
 			<div class="details-form-field">
-				<label for="name">Όνομα:</label> 
-				<input id="name" name="name" type="text">
+				<label for="name">Όνομα:</label> <input id="name" name="name"
+					type="text">
 			</div>
 			<div class="details-form-field">
 				<label for="surname">Επίθετο:</label> <input id="surname"
 					name="surname" type="text">
 			</div>
 			<div class="details-form-field">
-				<label for="address">Ηλικία:</label> <input id="age" name="age"
+				<label for="age">Ηλικία:</label> <input id="age" name="age"
+					type="text">
+			</div>
+			<div class="details-form-field">
+				<label for="address">Διεύθυνση:</label> <input id="address"
+					name="address" type="text">
+			</div>
+			<div class="details-form-field">
+				<label for="points">Πόντοι:</label> <input id="points" name="points"
 					type="text">
 			</div>
 
