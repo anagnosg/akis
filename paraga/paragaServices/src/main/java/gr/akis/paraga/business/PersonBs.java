@@ -47,10 +47,10 @@ public class PersonBs {
 	public PersonBs(){}
 	
 	public List<Person> selectMathimaAllDummy() throws SQLException{
-		List<Person> person = null; // ???sµ?? ??sta? µa??t??.
+		List<Person> person = null; // 
 		person = new ArrayList<Person>();
 		
-		//???sµ?? d?? a?t??e?µ???? µa??t?? Students  kai pro8hkh sthn lista. 
+		//Students  kai pro8hkh sthn lista. 
 		Person p = new Person(); //Orismos antikeimenou me onoma ag kai klash Student; Arxikopoihsh tou
 		p.setId(1);
 		p.setName("Istoria");
