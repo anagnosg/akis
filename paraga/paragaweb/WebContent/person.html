@@ -30,7 +30,6 @@
 
     	
 
-
     	$("#jsGrid").jsGrid({
             height: "auto",
             width: "80%",
@@ -68,14 +67,17 @@
                     modeSwitchButton: false,
                     editButton: false,
                     headerTemplate: function() {
-                        return $("<button>").attr("type", "button").text("Add")
-                                .on("click", function () {
-                                    showDetailsDialog("Add", {});
+                        var koumpiAdd= $("<button>").attr("type", "button").text("Add") ; //
+                        koumpiAdd.on("click", function () {   //orizei ti 8a ginei sto onclick -patima tou koumpiou .
+                           
+                                    $("#detailsDialog").dialog("open"); //8a parei to stoixeio detailsDialog kai 8a kanei open to para8uro.
                                 });
+                        return koumpiAdd;
                     }
                 }
             ]
         });
+    	
     
     	 
 
@@ -88,9 +90,27 @@
  
 <script>
 
-<script> 
+
 
 </script> 
+
+<script>
+//Edo orizetai to dialog.
+$(document).ready(function(){ // jquery. To antikeimeno document exei mia sunartisi ready.
+	//h opoia ti kanei ekteleitai otan forto8ei olh h selida.
+	
+	$("#detailsDialog").dialog({ //to # sthn jquery sumainei id. Pare to object me id detailsDialog kai kaneto dialog object
+	     autoOpen: false,
+	     width: 400,
+	     close: function() {
+	         $("#detailsForm").validate().resetForm();
+	         $("#detailsForm").find(".error").removeClass("error");
+	     }
+	 }); 
+
+});
+</script>
+
 </head> 
 
 </script>
@@ -112,7 +132,7 @@
 			<div class="content">
 				<div id="includedContent"></div>
 				<div class="outer">
-					<div class="inner" id="jsGrid"></div>
+					<div class="inner" id="jsGrid">AUTO EINAI TO DIV</div>
 
 				</div>
 
@@ -125,5 +145,34 @@
 
 	</div>
 
+
+
+	<!-- DIalog  -->
+
+	<div id="detailsDialog">
+
+		<form id="detailsForm" novalidate="novalidate">
+			<div class="details-form-field">
+				<input id="id" name="id" type="hidden"> <!--  den emfanizetai ston xrhsh kai to xrhsimopoioume gia to id ths eggrafhs sto update -->
+			</div>
+			<div class="details-form-field">
+				<label for="name">Όνομα:</label> 
+				<input id="name" name="name" type="text">
+			</div>
+			<div class="details-form-field">
+				<label for="surname">Επίθετο:</label> <input id="surname"
+					name="surname" type="text">
+			</div>
+			<div class="details-form-field">
+				<label for="address">Ηλικία:</label> <input id="age" name="age"
+					type="text">
+			</div>
+
+			<div class="details-form-field">
+				<button type="submit" id="save">Αποθήκευση</button>
+			</div>
+		</form>
+	</div>
+	<!-- END detailsDialog -->
 </body>
 </html>
