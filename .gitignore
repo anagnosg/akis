@@ -9,3 +9,14 @@ paraga/paragaServices/.classpath
 paraga/paragaServices/.settings/
 paraga/paragaServices/bin/
 paraga/paragaServices/.project
+askisisWeb/.classpath
+askisisWeb/.project
+askisisWeb/.gitignore
+askisisWeb/.tern-project
+askisisWeb/.settings/org.eclipse.wst.jsdt.ui.superType.name
+askisisWeb/.settings/org.eclipse.wst.jsdt.ui.superType.container
+askisisWeb/.settings/org.eclipse.wst.common.project.facet.core.xml
+askisisWeb/.settings/org.eclipse.wst.common.component
+askisisWeb/.settings/org.eclipse.jdt.core.prefs
+askisisWeb/.settings/.jsdtscope
+paraga/paragaweb/build/classes/.gitignore
