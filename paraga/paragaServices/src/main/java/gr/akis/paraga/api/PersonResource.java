@@ -16,7 +16,7 @@ import javax.ws.rs.core.Response.Status;
 
 import gr.akis.paraga.business.PersonBs;
 import gr.akis.paraga.models.Person;
- 
+import gr.akis.paraga.utils.ErrorHandling;
 import gr.anagnosg.schoolservices.models.ResponseModel;
 import gr.anagnosg.utis.GsonUtils;
 import io.swagger.annotations.Api;
@@ -53,9 +53,9 @@ public class PersonResource {
 			return Response.ok(rep).build();
 
 		} catch (Exception e) {
-			e.printStackTrace();
-			rep.setError(e.getMessage(), Status.INTERNAL_SERVER_ERROR.getStatusCode());
-			return Response.ok(rep).build();
+			
+			rep.setError(new ErrorHandling(e).getErrorMessage(), Status.INTERNAL_SERVER_ERROR.getStatusCode());
+			return Response.status(Status.INTERNAL_SERVER_ERROR.getStatusCode()).entity(rep).build();
 		}
 	}
 	@POST  //AUTA pou ksekinane me @ einai annotations 
