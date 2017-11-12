@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control"
+	content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<title>Τίτλος</title>
+<link rel="stylesheet" href="./jquery-ui/jquery-ui.css">
+<script src="./jquery-3.2.1.js"></script>
+<script src="./jquery-ui/jquery-ui.js"></script>
+
+<script>
+function callAjax(){
+	 
+	$.ajax({
+		url: "http://localhost:8080/paraga/api/person/all",
+	    type: "GET",
+	    dataType: "json",
+	    contentType: "application/json"
+	    
+	})
+	.fail(function(){
+    	$("#result").text("error");
+	}
+	)
+	.done(function(ajaxResult ){
+		var apotelesmaKlisiSeJson = JSON.stringify(ajaxResult);
+		$("#result").text(apotelesmaKlisiSeJson );
+	}
+
+	)
+	;
+}
+
+$(document).ready(function(){ // xrhsimopoioume thn biblio8hkh jquery-ui.min.js kai auth h entolh sumainei otan einai fortomenh h selida ektelese
+	$('#but1').click(function(e) { // προσθηκη συνάρτηση στο click του button
+		callAjax();
+	});
+    
+});
+</script>
+<body>
+	Σε αυτό το παράδειγμα κάνουμε πάλι ajax κλήση, αλλά αυτήν την φορά πέρνουμε τα data που επιστρέφει το ajax και τα βάλουμε 
+	στο div με id result, το αποτέλεσμα της κλήσης, αφού πρότα μετατρέψουμε το αντικείμενο σε json string.
+	Αν παρουσιαστεί λάθος γράφουμε στο div error. 
+	
+	<button id="but1">callAjax</button>
+	<br/>
+	<div id="result" ></div>	
+</body>
+</html>

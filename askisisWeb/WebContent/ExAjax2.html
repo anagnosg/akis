@@ -15,7 +15,7 @@
 function callAjax(){
 	 
 	$.ajax({
-		url: "http://localhost/paraga/api/person/all",
+		url: "http://localhost:8080/paraga/api/person/all",
 	    type: "GET",
 	    dataType: "json",
 	    contentType: "application/json"
@@ -24,7 +24,13 @@ function callAjax(){
 	.fail(function(){
     	alert( "error" );
 	}
-	);
+	)
+	.done(function(){
+		alert("success");
+	}
+
+	)
+	;
 }
 
 $(document).ready(function(){ // xrhsimopoioume thn biblio8hkh jquery-ui.min.js kai auth h entolh sumainei otan einai fortomenh h selida ektelese
@@ -36,7 +42,12 @@ $(document).ready(function(){ // xrhsimopoioume thn biblio8hkh jquery-ui.min.js 
 </script>
 <body>
 	Σε αυτό το παράδειγμα προσθέτουμε στην ajax κλήση, το fail, στο οποίο
-	ορίζουμε τι θα κάνουμε σε περίπτωση λάθους.
+	ορίζουμε τι θα κάνουμε σε περίπτωση λάθους. Σε αυτό το παράδειγμα θα κάνει alert ένα αλφαριθμητικό με τιμή "error".
+	Το error καλείται και όταν δεν απαντήσει ο server και όταν απαντήσει με status που σημαίνει error, π.χ. 500.
+	Επίσης προσθέτουμε το done (callback λεγονται αυτές οι συναρτήσεις , γιατί εκτελούνται μετά από την εκτέλεση της ajax)
+	To done εκτελείται όταν πετύχει η κλήση στον server. Στο παράδειγμα μας εκτελειται και κάνει alert το αλφαριθμητικό με 
+	τιμή success.
+	
 	<button id="but1">callAjax</button>
 
 </body>

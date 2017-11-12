@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control"
+	content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<title>Τίτλος</title>
+<link rel="stylesheet" href="./jquery-ui/jquery-ui.css">
+<script src="./jquery-3.2.1.js"></script>
+<script src="./jquery-ui/jquery-ui.js"></script>
+<script>
+
+function clickFun(){
+	
+	for(var i=0;i<10;i++){
+		var newElement = "<p>"+i+"</p>";
+		$("#result").append(newElement);
+	}
+}
+$(document).ready(function(){ // xrhsimopoioume thn biblio8hkh jquery-ui.min.js kai auth h entolh sumainei otan einai fortomenh h selida ektelese
+	$('#but1').click(function(e) { //Όταν  το button με id but1 πατηθεί  θα εκτελεστεί η συνάρτηση  clickFun();
+		clickFun();
+	});
+    
+});
+</script>
+</head>
+<body>
+Σε αυτό το παράδειγμα θα μάθουμε πως προσθέτουμε html αντικείμενα με την βοήθεια του jquery. 
+Πριν συνεχήσεις πρέπει να διαβάσεις το url <a href="https://www.w3schools.com/jquery/jquery_dom_add.asp" >add elements</a>
+Καταρχήν δημιουργούμε ένα κουμπί με id but1.
+Επίσης ορίζουμε ένα div με id result.
+Με την βοήθεια της jquery λέμε ότι όταν πατηθεί το κουμπί τότε θα κληθεί η συνάρτηση clickFun()
+
+
+Στην συνάρτηση clickFun
+Εκτελούμε ενα for loop 10 επαναλήψεων στο οποιο προσθέτουμε παραγράφους με κειμενο το loop index, στο div result 
+
+<button id="but1" >Button</button>
+<div id="result"></div>
+</body>
+</html>
