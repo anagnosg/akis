@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<title>Insert title here</title>
+</head>
+<link rel="stylesheet" href="./jquery-ui/jquery-ui.css">
+<script src="./jquery-3.2.1.js"></script>
+<script src="./jquery-ui/jquery-ui.js"></script>
+<script>
+function clickFun(){
+	alert('ClickFun'); //Εμφανίζει σε alert το click.
+}
+
+$(document).ready(function(){ // xrhsimopoioume thn biblio8hkh jquery-ui.min.js kai auth h entolh sumainei otan einai fortomenh h selida ektelese
+	$('#but1').click(function(e) { //Όταν  το button με id but1 πατηθεί  θα εκτελεστεί η συνάρτηση  clickFun();
+		alert('Click1');
+		clickFun();
+	});
+    
+});
+</script>
+<body>
+Σε αυτό το παράδειγμα δείχνουμε πως προσθέτουμε μια συνάρτηση στο click ενός button.
+Όταν  το button με id but1 πατηθεί  θα εκτελεστεί η alert('Click1'); και μετά η συνάρτηση  clickFun();
+	<button id="but1" >Click me </button>
+</body>
+</html>

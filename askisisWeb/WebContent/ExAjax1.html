@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Τίτλος</title>
+<link rel="stylesheet" href="./jquery-ui/jquery-ui.css">
+<script src="./jquery-3.2.1.js"></script>
+<script src="./jquery-ui/jquery-ui.js"></script>
+
+<script>
+function callAjax(){
+	 
+	$.ajax({
+		url: "http://localhost/paraga/api/person/all",
+	    type: "GET",
+	    dataType: "json",
+	    contentType: "application/json"
+	})
+}
+
+$(document).ready(function(){ // xrhsimopoioume thn biblio8hkh jquery-ui.min.js kai auth h entolh sumainei otan einai fortomenh h selida ektelese
+	$('#but1').click(function(e) { // προσθηκη συνάρτηση στο click του button
+		callAjax();
+	});
+    
+});
+</script>
+<body>
+Αυτή η σελίδα δείχνει πως κανουμε ajax με jquery. Αν δεν έχουμε σηκώσει τα services της java 
+τότε θα δούμε ότι το ajax αποτυγχάνει(console του chrome).
+H σελίδα που περιέχει το api της βιβλιοθήκης είναι http://api.jquery.com/jquery.ajax/
+Τα πιο σημαντικά options είναι :
+url: Το url ου θα κληθεί. 
+data: Τα data που θα στείλω στον server. Αν είναι GET θα προστεθούν σαν query params. 
+dataType: Ποια θα είναι η μορφή της απάντησης που θα δώσει ο server. Μπορεί να έχει διάφορες μορφές, 
+εμείς κυρίως θα δεχόμαστε json. 	
+contentType: Η μορφή με την οποία στέλνουμε τα data στον server. Σχεδόν πάντα θα 
+τα στέλνουμε σαν json, δηλαδή η παράμετρος αυτή θα έχει τιμή application/json.
+
+Στο παράδειγμα μην σηκώσεις αρχικά το service της java. 
+Πάτα το button και δες στο network των development tools του chrome τι κάνει. 
+Θα δεις ότι έχει μια εγγραφή με all, η οποία έχει status failed	
+	<button id="but1">callAjax</button>
+
+</body>
+</html>
