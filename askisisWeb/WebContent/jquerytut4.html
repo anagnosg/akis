@@ -1,0 +1,41 @@
+<html>
+
+   <head>
+      <title>The jQuery Example</title>
+      <!-- Κάνουμε import το jquery -->
+      <script type = "text/javascript" 
+               src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		
+      <script type = "text/javascript" language = "javascript">
+         $(document).ready(function() {
+        	 $("div").addClass("divClass");
+             $("p").addClass("pClass");
+         });
+      </script>
+		<!-- Εδω ορίζουμε ένα style css -->	
+      <style>
+      	 .divClass { 
+         	color:red; 
+            background:yellow; 
+            }
+         .pClass {
+         color:blue;
+         background:red;
+         }
+      </style>	
+   </head>
+	
+   <body>
+   Να οριστουν 2 css κλάσεις. Η μια να λεγεται divClass και να κάνει το χρώμα των γραμματων red και το backgroud yellow
+   H δευτερη κλάση να λέγεται pClass και να κάνει το χρώμα των γραμματων blue  και το backgroud red
+   Με jquery να εφαρμοστή η divClass σε όλα τα div και η  pClass σε όλες τις παραγράφους. 
+   
+   
+   
+   		<div  > Αυτο είναι ενα div </div>
+   		<div  > Αυτο είναι ενα a div </div>
+   		
+   		<p>  Αυτο είναι ενα p </p>
+   		<p>  Αυτο είναι ενα a p </p>
+	
+</html>

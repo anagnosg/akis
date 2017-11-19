@@ -1,0 +1,30 @@
+<html>
+
+   <head>
+      <title>The jQuery Example</title>
+      <script type = "text/javascript" 
+         src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		
+      <script type = "text/javascript" language = "javascript">
+         $(document).ready(function() {
+            var title = 'akis';
+           title=$("em").attr("title"); //to $("em") είναι ένας selector. Κάνeι select το <em
+            						//.attr("title") επέστρεψε μου το value με attribute title. Άρα η συναρτηση αυτή 
+            						//θα επιστρεψει Bold and Brave
+            $("#divid").text(title); //$("#divid") ειναι ενας selector με id. Οποτε θα βρει το element με id divid
+            							//και θα καλεσει την συνάρτηση text.H text όταν πέρνει όρισμα θέτει το 
+										//το κειμενο του element ίσο με το όρισμα. Δηλαδη εδώ θα θέσει το text του div 
+										// ίσο με την τιμή της μεταβλητής title.που είναι Bold and Brave
+         });
+      </script>
+   </head>
+	
+   <body>
+      <div>
+         <em title = "Bold and Brave test">This is first paragraph.</em>
+         <p id = "myid">This is second paragraph.</p>
+         <div id = "divid"></div>
+      </div>
+   </body>
+	
+</html>

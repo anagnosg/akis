@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<title>Insert title here</title>
+</head>
+<link rel="stylesheet" href="./jquery-ui/jquery-ui.css"> <!--  bazoume sthn selida mas to css ths jquery -->
+<script src="./jquery-3.2.1.js"></script> <!-- Kanoume import sthn selida mas toi library tou jquery -->
+<script src="./jquery-ui/jquery-ui.js"></script><!-- Kanoume import sthn selida mas toi library tou jquery ui-->
+<script>
+function callAjax(){ // orizeis mia sunarthsh me onoma callAjax. //xoris paramentrous
+	$.ajax({
+url:"http://localhost:8080/paraga/api/team/all",
+type:"GET",
+datatype:"json",
+contentType:"application/json"
+})
+.fail(function(){
+$("#result").text("error");
+}
+)
+.done(function(ajaxResult ){
+var data = ajaxResult.data;
+for(var i=0; i<data.length ; i++){
+	var paragraph = '<p>'+data[i].name+' '+data[i].address+'</p>';
+	$("#result").append(paragraph);
+	
+}
+}
+)
+;
+}
+
+$ (document).ready(function(){
+	$('#but1').click(function(e){
+		callAjax();
+	});
+
+});
+</script>
+<body>
+<button id="but1">callAjax</button>
+	<br/>
+	<div id="result" ></div>	
+</body>
+</html>
+
+
