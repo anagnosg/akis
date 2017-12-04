@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Team</title>
+<title>User</title>
 <link rel="stylesheet" type="text/css" href="./css/style.css">
 <!-- insert ena stylesheet -->
 <link rel="stylesheet" type="text/css" href="./css/menu.css">
@@ -43,11 +43,11 @@
 				gaction = 'update';
 				//args.item
 				$("#id").val($.trim(args.item.id));
-				$("#name").val($.trim(args.item.name));
-	  	        $("#address").val($.trim(args.item.address));
+				$("#username").val($.trim(args.item.username));
+	  	        $("#password").val($.trim(args.item.password));
 	  	       
   	      	
-            	$("#detailsDialog").dialog("option", "title", "Team")
+            	$("#detailsDialog").dialog("option", "title", "User")
 	                .dialog("open"); 
                 },  
               deleteItem: function(item) {
@@ -56,7 +56,7 @@
     	            type: "DELETE",
     	            dataType: "json",
     	            contentType: "application/json",
-    	            url: "http://"+host+"/paraga/api/team/delete",
+    	            url: "http://"+host+"/paraga/api/user/delete",
     	            data: data
     	            ,
     		        success: function(result){ //otan oloklhro8ei h klh tou ajax ekteleitai location.reload(); 
@@ -70,7 +70,7 @@
                     var d = $.Deferred();
      
                     $.ajax({
-                        url: "http://"+host+"/paraga/api/team/all",
+                        url: "http://"+host+"/paraga/api/user/all",
                         dataType: "json"
                     }).done(function(response) {
                         d.resolve(response.data);
@@ -83,8 +83,8 @@
      
             fields: [
 				{ title:'A/A', name: "id", type: "text" , key:true, width: 10 },
-                { title:'Όνομα',name: "name", type: "text" , width: 50},
-                {title:'Διέυθυνση',name: "address", type: "text" , width: 50},
+                { title:'Όνομα',name: "username", type: "text" , width: 50},
+                {title:'Κωδικος',name: "password", type: "text" , width: 50},
                 { 
                       
                     type: "control",
@@ -143,17 +143,17 @@ $(document).ready(function(){
 	        }
 	    });
 });
-function   saveTeam (   ) {
+function   saveUser (   ) {
 	 var dataPost {
 		 "id":$("#id").val(),
-     	"name":$("#name").val(),
-       	"address":$("#address").val(),
+     	"username":$("#username").val(),
+       	"password":$("#password").val(),
        };
 
 var action = gaction;
 	 
 $.ajax({
-      url: "http://"+host+"/paraga/api/Team/"+action,
+      url: "http://"+host+"/paraga/api/User/"+action,
 			type:"POST",
 			contentType: "application/json",
 			data : JSON.stringify(dataPost),
@@ -184,7 +184,7 @@ $("#detailsDialog").dialog("close");
 
 			<div class="logo"></div>
 			<div>
-				<h2>Team</h2>
+				<h2>User</h2>
 			</div>
 
 
@@ -218,14 +218,14 @@ $("#detailsDialog").dialog("close");
 			</div>
 			
 			<div class="details-form-field">
-				<label for="name">Όνομα:</label> <input id="name" name="name"
+				<label for="username">Όνομα:</label> <input id="username" name="username"
 					type="text">
 			</div>
 			
 			
 			<div class="details-form-field">
-				<label for="address">Διεύθυνση:</label> <input id="address"
-					name="address" type="text">
+				<label for="password">Κωδικος:</label> <input id="password"
+					name="password" type="text">
 			</div>
 			
 

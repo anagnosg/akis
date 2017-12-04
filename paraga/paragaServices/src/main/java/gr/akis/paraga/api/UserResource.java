@@ -14,28 +14,23 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import gr.akis.paraga.business.PersonBs;
-import gr.akis.paraga.business.TeamBs;
-import gr.akis.paraga.models.Person;
-import gr.akis.paraga.models.Team;
+import gr.akis.paraga.business.UserBs;
+import gr.akis.paraga.models.User;
 import gr.akis.paraga.utils.ErrorHandling;
 import gr.anagnosg.schoolservices.models.ResponseModel;
 import gr.anagnosg.utis.GsonUtils;
 import io.swagger.annotations.Api;
 
 @ApplicationScoped
-@Path("/team")
-@Api(value = "/team")
+@Path("/user")
+@Api(value = "/user")
 @Consumes("application/json")
 @Produces("application/json")
-public class TeamResource {
-
-	
-	
-	private static final Logger LOG = Logger.getLogger(TeamResource.class.getName()); //Logger xrhsimopoieitai gia na katagraefis ston log tou application server tis energeies pou ginontai 
+public class UserResource {
+private static final Logger LOG = Logger.getLogger(UserResource.class.getName()); //Logger xrhsimopoieitai gia na katagraefis ston log tou application server tis energeies pou ginontai 
 
 	@Inject
-	TeamBs teamBS;
+	UserBs userBS;
 	@Inject
 	GsonUtils gsUtils; // GsonUtils gsUtils = new GsonUtils(); 
  
@@ -46,9 +41,9 @@ public class TeamResource {
 	public Response all() {
 		
 		//Το E του response Model είναι μια λίστα απο student , List<Student>
-		ResponseModel<List<Team>> rep = new ResponseModel<List<Team>>(); // Orismos antikeimenou rep
+		ResponseModel<List<User>> rep = new ResponseModel<List<User>>(); // Orismos antikeimenou rep
 		try {  
-			List<Team> list = teamBS.selectAll(); 
+			List<User> list = userBS.selectAll(); 
 			//sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
 			rep.setData(list);
 			LOG.info("End all");
@@ -64,15 +59,15 @@ public class TeamResource {
 	@Path("/insert")  //Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response insert(Team teams) {
+	public Response insert(User users) {
 		
 		 
-		ResponseModel<Team> rep = new ResponseModel<Team>(); // Orismos antikeimenou rep
+		ResponseModel<User> rep = new ResponseModel<User>(); // Orismos antikeimenou rep
 		try {  
 			 
-			teams = teamBS.insert(teams); 
+			users = userBS.insert(users); 
 			//sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
-			rep.setData(teams);
+			rep.setData(users);
 			LOG.info("End all");
 			return Response.ok(rep).build();
 
@@ -88,15 +83,15 @@ public class TeamResource {
 	@Path("/update")  //Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response update(Team teams) {
+	public Response update(User users) {
 		
 		 
-		ResponseModel<Team> rep = new ResponseModel<Team>(); // Orismos antikeimenou rep
+		ResponseModel<User> rep = new ResponseModel<User>(); // Orismos antikeimenou rep
 		try {  
 			 
-			teams = teamBS.update(teams); 
+			users = userBS.update(users); 
 			//sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
-			rep.setData(teams);
+			rep.setData(users);
 			LOG.info("End all");
 			return Response.ok(rep).build();
 
@@ -111,15 +106,15 @@ public class TeamResource {
 	@Path("/delete")  //Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response delete(Team teams) {
+	public Response delete(User Users) {
 		
 		 
-		ResponseModel<Team> rep = new ResponseModel<Team>(); // Orismos antikeimenou rep
+		ResponseModel<User> rep = new ResponseModel<User>(); // Orismos antikeimenou rep
 		try {  
 			 
-			teams = teamBS.delete(teams); 
+			Users = userBS.delete(Users); 
 			//sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
-			rep.setData(teams);
+			rep.setData(Users);
 			LOG.info("End all");
 			return Response.ok(rep).build();
 
@@ -128,10 +123,7 @@ public class TeamResource {
 			rep.setError(e.getMessage(), Status.INTERNAL_SERVER_ERROR.getStatusCode());
 			return Response.ok(rep).build();
 		}
-	}	
-	
-
-
-
-
+	}
 }
+
+

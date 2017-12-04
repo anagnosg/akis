@@ -17,21 +17,18 @@ function callAjax(){
 	// 
 		var dataJson= {
 		    	  
-		    	  "name": "Ακης",
-		    	  "surname": "Ροινάς2",
-		    	  "age": 30,
-		    	  "address": "τεστ",
-		    	  "points": 10
-		    	};//edw telionei to adikeimeno dataJson
+		    	  "name": "Epistimones2",
+		    	  "address": "Lamia",
+		    	  };//edw telionei to adikeimeno dataJson
     	
     	
     	
 	$.ajax({
-		url: "http://localhost:8080/paraga/api/person/insert",
+		url: "http://localhost:8080/paraga/api/team/insert",
 	    type: "POST",
 	    dataType: "json",
 	    contentType: "application/json",
-	    data: '{"name": "Ακης2","surname": "Ροινάς22","age": 30,"address": "τεστ2","points": 10}'// JSON.stringify(dataPost),
+	    data: JSON.stringify(dataJson),//η συνάρτηση JSON.stringify κάνει το αντικειμενο string json.
 	    
 	})
 	.fail(function(){
@@ -55,10 +52,7 @@ $(document).ready(function(){ // xrhsimopoioume thn biblio8hkh jquery-ui.min.js 
 });
 </script>
 <body>
-	Σε αυτό το παράδειγμα θα κάνουμε κλήση ajax , με την οποία θα εισάγουμε ένα person. Άρα θα 
-	του περάσουμε κάποια data.
-	Πηγαινω στο api του jquery και διαβαζω το documentation. 
-	<a href="http://api.jquery.com/jQuery.ajax/" > jquery ajax</a>
+	 Να κλειθεί το service insert της ομαδας(team) με αντίστοιχο τρόπο.
 	
 	<button id="but1" > update</but>
 </body>

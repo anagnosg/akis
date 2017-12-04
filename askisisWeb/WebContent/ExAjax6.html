@@ -28,9 +28,9 @@ function callAjax(){
 	.done(function(ajaxResult ){
 		 
 		var data =  ajaxResult.data;
-		for(var i =0 ; i < data.length ; i++){
-			var paragraph = '<p>'+data[i].name+' '+data[i].surname+'</p>';
-			$("#result").append(paragraph);
+		for(var i =0 ; i < data.length ; i++){//me mia for diatrexoume ola ta stoixeia tou adikeimenou data.
+			var paragraph = '<p>'+data[i].name+' '+data[i].surname+'</p>';//orizoume ena adikeimeno paragraph kai vazoume mesa se auto to name tou i stoixeiou tou data kai meta to surname tou i stoixeiou tou data.
+			$("#result").append(paragraph);//prosthetoume sto div me id result to paragraph pou dhmiourgisame prohgoumenws.
 		}
 	}
 
@@ -51,6 +51,11 @@ $(document).ready(function(){ // xrhsimopoioume thn biblio8hkh jquery-ui.min.js 
 	Στο επιστρεφόμενο αντικείμενο, τα δεδομένα που θέλουμε για τους παίκτες βρίσκονται μέσα στο array data. 
 	Πέρνουμε το array και με ένα for loop δημιουργούμε παραγράφους μέσα στο div με Id result. Από κάθε στοιχείο του array πέρνουμε το όνομα και το 
 	επίθετο του παίχτη.
-	Το τι περιέχει το αντικείμενος μας το ξέρουμε από το swagger της κλήσης.	
+	Το τι περιέχει το αντικείμενο μας το ξέρουμε από το swagger της κλήσης.	
+	
+	<button id="but1">callAjax</button>
+	<br/>
+	
+	<div id="result" ></div>	
 </body>
 </html>

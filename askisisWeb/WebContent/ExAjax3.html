@@ -21,13 +21,21 @@ function callAjax(){
 	    contentType: "application/json"
 	    
 	})
-	.fail(function(){
+	.fail(function(){//all elements with function named fail
     	$("#result").text("error");
 	}
 	)
 	.done(function(ajaxResult ){
 		var apotelesmaKlisiSeJson = JSON.stringify(ajaxResult);
+		var dataVal = JSON.stringify(ajaxResult.data);
+		var dataProtoStoixeioPinakaVal = JSON.stringify(ajaxResult.data[0]);
+		var datadeuteroStoixeioPinakaVal = JSON.stringify(ajaxResult.data[1]);
+		
 		$("#result").text(apotelesmaKlisiSeJson );
+		$("#result2").text(dataVal );
+		$("#result3").text(dataProtoStoixeioPinakaVal );
+		$("#result4").text(datadeuteroStoixeioPinakaVal );
+		
 	}
 
 	)
@@ -48,6 +56,18 @@ $(document).ready(function(){ // xrhsimopoioume thn biblio8hkh jquery-ui.min.js 
 	
 	<button id="but1">callAjax</button>
 	<br/>
+	Auto einai to result
+	<br/>
 	<div id="result" ></div>	
+	<br/>
+	Auto einai to result2
+	<div id="result2" ></div>
+	
+	<br/>
+	Auto einai to result3
+	<div id="result3" ></div>
+	<br/>
+	Auto einai to result4
+	<div id="result4" ></div>
 </body>
 </html>

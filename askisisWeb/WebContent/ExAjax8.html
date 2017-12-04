@@ -12,50 +12,61 @@
 <script src="./jquery-ui/jquery-ui.js"></script>
 
 <script>
-function callAjax(){
-		var dataJson= {
-		    	  
-		    	  "name": $("#name").val(),
-		    	  "surname": $("#surname").val(),
-		    	  "age":$("#age").val(),
-		    	  "address": $("#address").val(),
-		    	  "points": $("#points").val(),
-		    	};
+function callAjax(){ //orizoume thn synartisi me onoma call Ajax.
+	var nameValue;//orizoume mia metavliti nameValue.
+	nameValue=$("#name").val();//thetoume th timh nameValue ish me to value tou text field me id name. 
+	//orizoume metavliti me onoma dataJson.H metavliti auth einai ena adikeimeno.
+	//auto sth javascript orizete me {}.
+				//orizei ena property tou adikeimenou me onoma name
+				//nameValue orizei th timh tou property name.
+	var surname;
+	surnameValue=$("#surname").val();			
+
+				
+var dataJson= { "name":nameValue ,"surname": surnameValue,"age":$("#age").val(),"address": $("#address").val(),"points": $("#points").val()};
     	
-	$.ajax({
-		url: "http://localhost:8080/paraga/api/person/insert",
-	    type: "POST",
-	    dataType: "json",
-	    contentType: "application/json",
-	    data: JSON.stringify(dataJson),
-	    
-	})
-	.fail(function(){
-    	$("#result").text("error");
-	}
+	$.ajax(//edo arxizei to ajax
+			{ //san proto orisma h ajax pernei antikeimeno 
+				url: "http://localhost:8080/paraga/api/person/insert", //edo orizetai to url property, me timh 'http ... '
+			    type: "POST", //to type orizei ti request 8a ginei, GET, POST, DELETE. Edo POST
+			    dataType: "json", // to dataType orizei pos einai o tupos tou data pou stelno.Einai json.
+			    data: JSON.stringify(dataJson) //edo einai ta data pou stelno. Kano json string to antikeimeno dataJson
+			    contentType: "application/json" //edo einai o tupos ton dedomenon pou 8elo piso.json.
+			}
+		  )//teleionei to proto tou orisma.
+	.fail(
+			function(){ //me . fail orizetai h fail sunarthsh , 8a ektelestei otan apotuxei to ajax.
+				//auto ekteleitai otan exei problhma to ajax.	
+    			$("#result").text("error");
+			}
 	)
-	.done(function(ajaxResult ){
+	.done(
+			function(ajaxResult ){ //to .done orizetai edo kai einai otan petuxei to ajax.
 		 
 		
-	}
-
-	)
-	;
+			}
+	); //edo teleionei  to done tou ajax.
 }
 
-$(document).ready(function(){ // xrhsimopoioume thn biblio8hkh jquery-ui.min.js kai auth h entolh sumainei otan einai fortomenh h selida ektelese
-	$('#but1').click(function(e) { // προσθηκη συνάρτηση στο click του button
-		callAjax();
-	});
+$(document).ready(
+		function(){ // xrhsimopoioume thn biblio8hkh jquery-ui.min.js kai auth h entolh sumainei otan einai fortomenh h selida ektelese
+
+
+				$('#but1').click(function(e) { // προσθηκη συνάρτηση στο click του button
+					callAjax();
+				});
 
 	
     
-});
+		}
+);//edo teleionei to document ready 
+
 </script>
 <body>
 	Συνεχίζουμε το παράδειγμα με το ajax insert, αλλά τώρα θα πέρνουμε τα στοιχεία από text πεδία που συπληρώνει 
 	ο χρήστης.  
-	Name:<input id="name" ></input> <br>
+	Name:<input id="name" ></input> <!-- edo orizoume ena textfield me id name.(edo 8a balei o xrhsteis to name )  -->
+	<br> 
 	Surname:<input id="surname" ></input><br>
 	Age:<input id="age" ></input><br>
 	Address:<input id="address" ></input><br>

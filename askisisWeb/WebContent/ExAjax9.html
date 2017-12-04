@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control"
+	content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<title>Τίτλος</title>
+<link rel="stylesheet" href="./jquery-ui/jquery-ui.css">
+<script src="./jquery-3.2.1.js"></script>
+<script src="./jquery-ui/jquery-ui.js"></script>
+
+<script>
+function callAjax(){
+		var dataJson= {
+		    	  "id":$("#id").val(),
+		    	  "name": $("#name").val(),
+		    	  "surname": $("#surname").val(),
+		    	  "age":$("#age").val(),
+		    	  "address": $("#address").val(),
+		    	  "points": $("#points").val(),
+		    	};
+    	
+	$.ajax({
+		url: "http://localhost:8080/paraga/api/person/update",
+	    type: "POST",
+	    dataType: "json",
+	    contentType: "application/json",
+	    data: JSON.stringify(dataJson),
+	    
+	})
+	.fail(function(){
+    	$("#result").text("error");
+	}
+	)
+	.done(function(ajaxResult ){
+		 
+		
+	}
+
+	)
+	;
+	}
+function callAjax2(){
+	var dataJson= {
+	    	  "id":$("#id2").val()
+	};
+
+	$.ajax({
+		url: "http://localhost:8080/paraga/api/person/delete",
+	    type: "DELETE",
+	    dataType: "json",
+	    contentType: "application/json",
+	    data: JSON.stringify(dataJson),
+	});
+
+}
+
+	    	  
+$(document).ready(function(){ // xrhsimopoioume thn biblio8hkh jquery-ui.min.js kai auth h entolh sumainei otan einai fortomenh h selida ektelese
+	$('#but1').click(function(e) { // προσθηκη συνάρτηση στο click του button
+		callAjax();
+	});
+	
+	$('#but2').click(function(e) { // προσθηκη συνάρτηση στο click του button
+		callAjax2();
+	});
+    
+});
+
+	
+</script>
+<body>
+	Συνεχίζουμε το παράδειγμα με το ajax insert, αλλά τώρα θα πέρνουμε τα στοιχεία από text πεδία που συπληρώνει 
+	ο χρήστης. 
+	Id:<input  id="id" ></input> <br>  
+	Name:<input id="name" ></input> <br>
+	Surname:<input id="surname" ></input><br>
+	Age:<input id="age" ></input><br>
+	Address:<input id="address" ></input><br>
+	Points:<input id="points" ></input><br>
+	<button id="but1" > update</button>
+	
+	Id:<input  id="id2" ></input> <br> 
+	<button id="but2" > delete</button>
+	
+</body>
+</html>>
