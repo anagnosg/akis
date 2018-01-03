@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+import gr.akis.paraga.api.Login_logResource;
 import gr.akis.paraga.api.PersonResource;
 import gr.akis.paraga.api.TeamResource;
 import gr.akis.paraga.api.UserResource;
@@ -62,6 +63,7 @@ public class ParagaServicesApplication extends Application {
 		resources.add(PersonResource.class);
 		resources.add(TeamResource.class);
 		resources.add(VathmologiaResource.class);
+		resources.add(Login_logResource.class);
 		resources.add(UserResource.class);
 		resources.add(io.swagger.jaxrs.listing.ApiListingResource.class);
 		resources.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);

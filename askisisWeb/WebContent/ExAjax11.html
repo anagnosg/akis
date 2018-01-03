@@ -13,22 +13,18 @@
 
 <script>
 function callAjax(){
-
-		var dataJson= {
-		    	  
-				
-		    	"name": $("#name").val(),
-		    	"address": $("#address").val(),
-		    	  };//edw telionei to adikeimeno dataJson
-    	
-    	
     	
 	$.ajax({
-		url: "http://localhost:8080/paraga/api/team/insert",
-	    type: "POST",
+		url: "http://localhost:8080/paraga/api/user/user_password",
+	    type: "GET",
 	    dataType: "json",
 	    contentType: "application/json",
-	    data: JSON.stringify(dataJson),//η συνάρτηση JSON.stringify κάνει το αντικειμενο string json.
+	    data: {
+	    	  
+			
+	    	"username": $("#username").val(),
+	    	"password": $("#password").val(),
+	    	  }
 	    
 	})
 	.fail(function(){
@@ -36,6 +32,21 @@ function callAjax(){
 	}
 	)
 	.done(function(ajaxResult ){
+		var data =  ajaxResult.data;
+		
+        if (data.length==1){
+	      //$("#result").text("exist");
+  	      ///paragaweb/team.html
+        	window.location.href = "/paragaweb/team.html";
+        }
+        else {
+          $("#result").text("Lathos. parakalo balte ta stoixeia ksana. ");
+
+          
+        }
+	
+
+			
 		 
 		
 	}
@@ -52,10 +63,16 @@ $(document).ready(function(){ // xrhsimopoioume thn biblio8hkh jquery-ui.min.js 
 });
 </script>
 <body>
-	 Να κλειθεί το service insert της ομαδας(team) με αντίστοιχο τρόπο.
-	 
-	Name:<input id="name" ></input> <br>
-	Address:<input id="address"></input> <br>
-	<button id="but1" > update</but>
+	Να κλειθεί το service insert της ομαδας(team) με αντίστοιχο τρόπο.
+
+	Username:
+	<input id="username"></input>
+	<br> Password:
+	<input id="password"></input>
+	<br>
+	<button id="but1">
+		update
+		</button>
+		<div id='result'></div>
 </body>
 </html>

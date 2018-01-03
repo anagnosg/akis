@@ -9,6 +9,7 @@ import javax.inject.Inject;
 
 import gr.akis.paraga.db.TeamDB;
 import gr.akis.paraga.db.UserDB;
+import gr.akis.paraga.models.Login_log;
 import gr.akis.paraga.models.Team;
 import gr.akis.paraga.models.User;
 import gr.anagnosg.employeeservices.db.utils.ConnectionWrapper;
@@ -28,6 +29,8 @@ public class UserBs {
 		users = userDB.selectAll();
 		return users;
 	}
+	
+	
 public User insert(User users) throws SQLException{
 		
 		return userDB.insert(users);
@@ -69,7 +72,11 @@ public User insert(User users) throws SQLException{
 		 
 		return users;
 	}	
-	
+	public List<User> selectUser(String username,String password) throws SQLException {
+		List<User> users;
+		users = userDB.selectUser(username,password);
+		return users;
+	}
 	
 	
 }

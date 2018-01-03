@@ -15,36 +15,37 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import gr.akis.paraga.business.Login_logBs;
 import gr.akis.paraga.business.UserBs;
+import gr.akis.paraga.models.Login_log;
 import gr.akis.paraga.models.User;
 import gr.akis.paraga.utils.ErrorHandling;
 import gr.anagnosg.schoolservices.models.ResponseModel;
 import gr.anagnosg.utis.GsonUtils;
-import io.swagger.annotations.Api;
+import io.swagger.annotations.Api;import java.util.List;
 
 @ApplicationScoped
-@Path("/user")
-@Api(value = "/user")
+@Path("/Login_log")
+@Api(value = "/Login_log")
 @Consumes("application/json")
-@Produces("application/json")
-public class UserResource {
-private static final Logger LOG = Logger.getLogger(UserResource.class.getName()); //Logger xrhsimopoieitai gia na katagraefis ston log tou application server tis energeies pou ginontai 
+@Produces("application/json")public class Login_logResource {
+private static final Logger LOG = Logger.getLogger(Login_logResource.class.getName()); //Logger xrhsimopoieitai gia na katagraefis ston log tou application server tis energeies pou ginontai 
 
 	@Inject
-	UserBs userBS;
+	Login_logBs Login_logBS;
 	@Inject
 	GsonUtils gsUtils; // GsonUtils gsUtils = new GsonUtils(); 
  
 	@GET  //AUTA pou ksekinane me @ einai annotations 
-	@Path("/user_password")  //Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
+	@Path("/Login_log")  //Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response user_password(@QueryParam("username") String username,@QueryParam("password")String password) {
+	public Response Login_log(@QueryParam("username") String username) {
 		
 		//Το E του response Model είναι μια λίστα απο student , List<Student>
-		ResponseModel<List<User>> rep = new ResponseModel<List<User>>(); // Orismos antikeimenou rep
+		ResponseModel<List<Login_log>> rep = new ResponseModel<List<Login_log>>(); // Orismos antikeimenou rep
 		try {  
-			List<User> list = userBS.selectUser(username,password); 
+			List<Login_log> list = Login_logBS.selectAll();
 			//sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
 			rep.setData(list);
 			LOG.info("End all");
@@ -63,9 +64,9 @@ private static final Logger LOG = Logger.getLogger(UserResource.class.getName())
 	public Response all() {
 		
 		//Το E του response Model είναι μια λίστα απο student , List<Student>
-		ResponseModel<List<User>> rep = new ResponseModel<List<User>>(); // Orismos antikeimenou rep
+		ResponseModel<List<Login_log>> rep = new ResponseModel<List<Login_log>>(); // Orismos antikeimenou rep
 		try {  
-			List<User> list = userBS.selectAll(); 
+			List<Login_log> list = Login_logBS.selectAll(); 
 			//sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
 			rep.setData(list);
 			LOG.info("End all");
@@ -81,15 +82,15 @@ private static final Logger LOG = Logger.getLogger(UserResource.class.getName())
 	@Path("/insert")  //Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response insert(User users) {
+	public Response insert(Login_log login) {
 		
 		 
-		ResponseModel<User> rep = new ResponseModel<User>(); // Orismos antikeimenou rep
+		ResponseModel<Login_log> rep = new ResponseModel<Login_log>(); // Orismos antikeimenou rep
 		try {  
 			 
-			users = userBS.insert(users); 
+			login = Login_logBS.insert(login); 
 			//sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
-			rep.setData(users);
+			rep.setData(login);
 			LOG.info("End all");
 			return Response.ok(rep).build();
 
@@ -105,15 +106,15 @@ private static final Logger LOG = Logger.getLogger(UserResource.class.getName())
 	@Path("/update")  //Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response update(User users) {
+	public Response update(Login_log login) {
 		
 		 
-		ResponseModel<User> rep = new ResponseModel<User>(); // Orismos antikeimenou rep
+		ResponseModel<Login_log> rep = new ResponseModel<Login_log>(); // Orismos antikeimenou rep
 		try {  
 			 
-			users = userBS.update(users); 
+			login = Login_logBS.update(login); 
 			//sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
-			rep.setData(users);
+			rep.setData(login);
 			LOG.info("End all");
 			return Response.ok(rep).build();
 
@@ -128,15 +129,15 @@ private static final Logger LOG = Logger.getLogger(UserResource.class.getName())
 	@Path("/delete")  //Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response delete(User Users) {
+	public Response delete(Login_log login) {
 		
 		 
-		ResponseModel<User> rep = new ResponseModel<User>(); // Orismos antikeimenou rep
+		ResponseModel<Login_log> rep = new ResponseModel<Login_log>(); // Orismos antikeimenou rep
 		try {  
 			 
-			Users = userBS.delete(Users); 
+			login = Login_logBS.delete(login); 
 			//sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
-			rep.setData(Users);
+			rep.setData(login);
 			LOG.info("End all");
 			return Response.ok(rep).build();
 
@@ -147,6 +148,4 @@ private static final Logger LOG = Logger.getLogger(UserResource.class.getName())
 		}
 	}
 }
-
-
 

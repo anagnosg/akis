@@ -11,18 +11,16 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import org.jboss.security.auth.spi.Users;
-
-import gr.akis.paraga.models.Team;
+import gr.akis.paraga.models.Login_log;
 import gr.akis.paraga.models.User;
 import gr.anagnosg.employeeservices.db.utils.ConnectionWrapper;
 
 @RequestScoped
-public class UserDB {
+public class Login_logDB {
 	@Inject
 	ConnectionWrapper connWrapper;
 
-	public UserDB() {
+	public Login_logDB() {
 	}
 
 	/**
@@ -31,30 +29,30 @@ public class UserDB {
 	 * @return
 	 * @throws SQLException
 	 */
-	public List<User> selectAll() throws SQLException {
-		List<User> users = new ArrayList<User>();
+	public List<Login_log> selectAll() throws SQLException {
+		List<Login_log> login = new ArrayList<Login_log>();
 
-		String sql = "SELECT ID ,USERNAME,PASSWORD FROM  Users ";
+		String sql = "SELECT ID ,USERNAME FROM  Login_log ";
 
 		try (PreparedStatement pstate = this.connWrapper.getConnection().prepareStatement(sql);
 				ResultSet rs = pstate.executeQuery();) {
 			while (rs.next()) {
 
-				User u = new User();
-				u.setId(rs.getInt("ID"));
-				u.setPassword(rs.getString("USERNAME"));
-				u.setUsername(rs.getString("PASSWORD"));
+				Login_log l = new Login_log();
+				l.setId(rs.getInt("ID"));
+				l.setUsername(rs.getString("USERNAME"));
+				
 
-				users.add(u);
+				login.add(l);
 			}
 		}
-		return users;
+		return login;
 	}
 
-	public List<User> selectUser(String username,String password) throws SQLException {
-		List<User> users   = new ArrayList<User>();
+	public List<Login_log> selectUser(String username) throws SQLException {
+		List<Login_log> login   = new ArrayList<Login_log>();
 		
-		String sql = "SELECT ID ,USERNAME,PASSWORD FROM  Users " + "where username=? and password=?";
+		String sql = "SELECT ID ,USERNAME FROM  Users " + "where username=?";
 		try (PreparedStatement pstate = this.connWrapper.getConnection().prepareStatement(sql);
 				
 				
@@ -62,26 +60,25 @@ public class UserDB {
 				
 				) {
 			pstate.setString(1,username);
-			pstate.setString(2,password);
 			try(ResultSet rs = pstate.executeQuery();){
 			while (rs.next()) {
 
-				User u = new User();
-				u.setId(rs.getInt("ID"));
-				u.setPassword(rs.getString("USERNAME"));
-				u.setUsername(rs.getString("PASSWORD"));
+				Login_log l = new Login_log();
+				l.setId(rs.getInt("ID"));
+				l.setUsername(rs.getString("USERNAME"));
+			
 				
 				
-			    users.add(u);
+			    login.add(l);
 			}
 			}
 		}
-		return users;
+		return login;
 	}
 
-	public User insert(User users) throws SQLException {
+	public Login_log insert(Login_log login) throws SQLException {
 
-		String sql = "INSERT INTO USERS (USERNAME ,PASSWORD) VALUES (?,?)";
+		String sql = "INSERT INTO USERS (USERNAME) VALUES (?)";
 		                                                                    // orismoume
 																			// se
 																			// ena
@@ -106,8 +103,8 @@ public class UserDB {
 		// kai me to try sthn periptosh pou petaksi kapoio exeception ekteloume
 		// kapoies leitourgies.
 		try {
-			pstate.setString(1, users.getUsername()); // pername tis patametrous
-			pstate.setString(2, users.getPassword());
+			pstate.setString(1, login.getUsername()); // pername tis patametrous
+			
 			pstate.executeUpdate(); // ekteloume to sql .Epeidh einai insert h
 									// updat ekteloume to
 			// execute update.
@@ -115,7 +112,7 @@ public class UserDB {
 			// ta identities.
 			try (ResultSet generatedKeys = pstate.getGeneratedKeys()) {
 				if (generatedKeys.next()) {// eprnouem to epomeno identity.
-					users.setId(generatedKeys.getInt(1)); // badoume to id sto
+					login.setId(generatedKeys.getInt(1)); // badoume to id sto
 															// antikeimeno mas.
 				}
 			}
@@ -129,21 +126,20 @@ public class UserDB {
 			}
 		}
 
-		return users;
+		return login;
 	}
 
-	public User update(User users) throws SQLException {
+	public Login_log update(Login_log login) throws SQLException {
 
-		String sql = "update Users set username=? ,password=? where id = ?  ";
+		String sql = "update Users set username=? where id = ?  ";
 
 		try (PreparedStatement pstate = this.connWrapper.getConnection().prepareStatement(sql);) {
-			pstate.setString(1, users.getUsername());
-			pstate.setString(2, users.getPassword());
-			pstate.setInt(3, users.getId());
+			pstate.setString(1, login.getUsername());
+			pstate.setInt(3, login.getId());
 			int count = pstate.executeUpdate();// epistrefei to plh8os ton
 												// grammon poy exei allaksei
 			if (count != 0) {
-				return users;
+				return login;
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
@@ -152,14 +148,14 @@ public class UserDB {
 		return null;
 	}
 
-	public User delete(User users) throws SQLException {
+	public Login_log delete(Login_log login) throws SQLException {
 		int count = 0;
-		String sql = "  delete from Users where id = ?      ";
+		String sql = "  delete from Login_log where id = ? ";
 		try (PreparedStatement pstate = this.connWrapper.getConnection().prepareStatement(sql);) {
-			pstate.setInt(1, users.getId());
+			pstate.setInt(1, login.getId());
 			count = pstate.executeUpdate();
 		}
-		return users;
+		return login;
 	}
 
 }
