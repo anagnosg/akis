@@ -52,7 +52,7 @@ public class Login_logDB {
 	public List<Login_log> selectUser(String username) throws SQLException {
 		List<Login_log> login   = new ArrayList<Login_log>();
 		
-		String sql = "SELECT ID ,USERNAME FROM  Users " + "where username=?";
+		String sql = "SELECT ID ,USERNAME FROM  Login_log " + "where username=?";
 		try (PreparedStatement pstate = this.connWrapper.getConnection().prepareStatement(sql);
 				
 				
@@ -78,7 +78,7 @@ public class Login_logDB {
 
 	public Login_log insert(Login_log login) throws SQLException {
 
-		String sql = "INSERT INTO USERS (USERNAME) VALUES (?)";
+		String sql = "INSERT INTO LOGIN_LOG (USERNAME) VALUES (?)";
 		                                                                    // orismoume
 																			// se
 																			// ena
@@ -104,7 +104,6 @@ public class Login_logDB {
 		// kapoies leitourgies.
 		try {
 			pstate.setString(1, login.getUsername()); // pername tis patametrous
-			
 			pstate.executeUpdate(); // ekteloume to sql .Epeidh einai insert h
 									// updat ekteloume to
 			// execute update.
@@ -131,7 +130,7 @@ public class Login_logDB {
 
 	public Login_log update(Login_log login) throws SQLException {
 
-		String sql = "update Users set username=? where id = ?  ";
+		String sql = "update Login_log set username=? where id = ?  ";
 
 		try (PreparedStatement pstate = this.connWrapper.getConnection().prepareStatement(sql);) {
 			pstate.setString(1, login.getUsername());

@@ -3,6 +3,7 @@ package gr.akis.paraga.models;
 public class Login_log {
 	Integer id;
 	String username;
+	String password;
 	
 
 	public Integer getId() {
@@ -19,6 +20,11 @@ public class Login_log {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return password;
 	}
 
 	
