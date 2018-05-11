@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<title>Ψηφοφορία</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
+.w3-bar-block .w3-bar-item {padding:20px}
+</style>
+
+<!-- Font Awesome Icon Library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.checked {
+    color: orange;
+}
+</style>
+
+<!--Στύλ Photo-Gallery -->
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial;
+}
+
+.header {
+    text-align: center;
+    padding: 32px;
+}
+
+.row {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+    -ms-flex: 25%; /* IE10 */
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 4px;
+}
+
+.column img {
+    margin-top: 8px;
+    vertical-align: middle;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+    .column {
+        -ms-flex: 50%;
+        flex: 50%;
+        max-width: 50%;
+    }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column {
+        -ms-flex: 100%;
+        flex: 100%;
+        max-width: 100%;
+    }
+}
+</style>
+
+<body>
+
+
+<!-- Top menu -->
+<div class="w3-top">
+  <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
+   <div class="w3-center w3-padding-16">Ψηφοφορία </div>
+  </div>
+</div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+
+  <!-- First Photo Grid-->
+  <div class="w3-row-padding w3-padding-16 w3-center" id="podosfairo">
+    <h2>Καλύτερη Ομάδα 2018</h2><br>
+    
+	<div class="w3-quarter">
+	<h2>A.E.K </h2>
+	  <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/AEK.jpg" alt="AEK" style="width:100%">
+      <p> Αθλητική Ένωσις Κωνσταντινουπόλεως Ίδρυση: 13 Απριλίου 1924 Αθήνα<br>
+	      Έδρα: Αγία Σοφία Ν.Φιλλαδέλφεια<br>
+		  Χρώμα: Κιτρινόμαυρο<br>
+		  Πρωταθλήματα: 12<br>
+		  Κύπελα: 16
+		  </p>
+      <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+    </div>
+	
+    <div class="w3-quarter">
+      <h2>Π.Α.Ο.Κ</h2>
+	  <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/paok.jpg" alt="paok" style="width:50%">
+	  <p> Πανθεσσαλονίακος Ομίλος Κωνστα/τών Ίδρυση: 20 Απριλίου 1926 Θεσσαλονίκη<br>
+	      Έδρα: Τούμπα,Τούμπα,Θεσσαλονίκη
+		  Χρώμα: Άσπρομαυρο<br>
+		  Πρωταθλήματα: 2<br>
+		  Κύπελα: 5
+		  </p>
+		  <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+       </div>
+	   
+    <div class="w3-quarter">
+	<h2>Ολυμπιακός</h2>
+      <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/osfp.jpg" alt="osfp" style="width:66%">
+      <p>Ολυμπιακός Πειραιώς <br>
+	   Ίδρυση: 10  Μαρτίου 1925 Πειραιάς<br> 
+	   Έδρα:Στ.Καραϊσκάκης,Πειραιάς<br>
+		  Χρώμα: Ερυθρόλευκο<br>
+		  Πρωταθλήματα: 44<br>
+		  Κύπελα: 27
+	  </p>
+	  <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+    </div>
+	
+	<div class="w3-quarter">
+	<h2>Ατρόμητος</h2>
+      <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/atromitos.jpg" alt="atromitos" style="width:52%">
+      <p>Α.Π.Σ. Ατρόμητος Αθηνών  <br>
+	   Ίδρυση: 3  Μαϊου 1923 Περιστέρι<br> 
+	   Έδρα:Δημ.Στάδιο Περιστερίου,Περιστέρι
+		  Χρώμα: Μπλέ/Λευκό<br>
+		  Πρωταθλήματα: 0<br>
+		  Κύπελα: 0
+		  </p>
+		  <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+    </div>
+  
+  </div>
+  </div>
+  
+  <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+
+  <!-- second Photo Grid-->
+  <div class="w3-row-padding w3-padding-16 w3-center" id="podosfairo">
+    <h2>Καλύτερος Ποδοσφαιριστής 2018</h2><br>
+    
+	<div class="w3-quarter">
+	<h2>Λάζαρος </h2>
+	  <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/lazaros.jpg" alt="lazaros" style="width:90%">
+      <p> Ομάδα: Α.Ε.Κ<br>
+	      Ηλικία: 31<br>
+		  Ύψος:1.82m<br>
+		  Bάρος:76Kg<br>
+		  Θέση: Μέσος<br>
+		  </p>
+      <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+    </div>
+	
+    <div class="w3-quarter">
+      <h2>Prijović</h2>
+	  <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/prijiovic.jpg" alt="prijiovic" style="width:80%">
+	  <p> Ομάδα: Π.Α.Ο.Κ<br>
+	      Ηλικία: 28<br>
+		  Ύψος:1.91m<br>
+		  Bάρος:88Kg<br>
+		  Θέση: Επιθετικός<br>
+		  </p>
+		  <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+       </div>
+	   
+    <div class="w3-quarter">
+	<h2>Κουρμπέλης</h2>
+	  <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/kourbelis.jpg" alt="kourbelis" style="width:100%">
+	  <p> Ομάδα: Παναθηναϊκός<br>
+	      Ηλικία: 24<br>
+		  Ύψος:1.82m<br>
+		  Bάρος:73Kg<br>
+		  Θέση: Αμυντικός<br>
+	   </p>
+	   <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+    </div>
+	
+	<div class="w3-quarter">
+	<h2>Livaja</h2>
+      <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/livaja.jpg" alt="livaja" style="width:100%">
+      <p> Ομάδα: Α.Ε.Κ<br>
+	      Ηλικία: 24<br>
+		  Ύψος:1.82m<br>
+		  Bάρος:76Kg<br>
+		  Θέση: Επιθετικός<br>
+		  </p>
+		  <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+    </div>
+  
+  </div>
+  </div>
+ 
+ 
+  <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+
+  <!-- third Photo Grid-->
+  <div class="w3-row-padding w3-padding-16 w3-center" id="podosfairo">
+    <h2>Καλύτερος Προπονητής 2018</h2><br>
+    
+	<div class="w3-quarter">
+	<h2>Jiménez </h2>
+	  <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/ximeneth.jpg" alt="ximeneth" style="width:90%">
+      <p> Ομάδα: Α.Ε.Κ<br>
+	      Ηλικία: 54<br>
+		  Ύψος:1.78m<br>
+		  Bάρος:76Kg<br>
+		  Καταγωγή: Ισπανός<br>
+		  </p>
+      <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+    </div>
+	
+    <div class="w3-quarter">
+      <h2>Lucescu</h2>
+	  <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/lucescu.jpg" alt="lucescou" style="width:100%">
+	  <p> Ομάδα: Π.Α.Ο.Κ<br>
+	      Ηλικία: 49<br>
+		  Ύψος:1.86m<br>
+		  Bάρος:77Kg<br>
+		  Καταγωγή: Ρουμάνος<br>
+		  </p>
+		  <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+       </div>
+	   
+    <div class="w3-quarter">
+	<h2>Ουζουνίδης</h2>
+	  <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/ouzounidis.jpg" alt="ouzounidis" style="width:96%">
+	  <p> Ομάδα: Π.Α.Ο<br>
+	      Ηλικία: 49<br>
+		  Ύψος:1.85m<br>
+		  Bάρος:80Kg<br>
+		  Καταγωγή: Έλληνας<br>
+		  </p>
+		  <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+       </div>
+	
+	<div class="w3-quarter">
+	<h2>Παντελίδης</h2>
+	  <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/padelidis.jpg" alt="padelidis" style="width:107%">
+	  <p> Ομάδα: Αστέρας Τρίπολης<br>
+	      Ηλικία: 53<br>
+		  Ύψος:1.80m<br>
+		  Bάρος:85Kg<br>
+		  Καταγωγή: Έλληνας<br>
+		  </p>
+		  <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+       </div>
+  
+  </div>
+  </div>
+  
+  <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+
+  <!-- third Photo Grid-->
+  <div class="w3-row-padding w3-padding-16 w3-center" id="podosfairo">
+    <h2>Καλύτερος Πρόεδρος 2018</h2><br>
+    
+	<div class="w3-quarter">
+	<h2>Μελισσανίδης</h2>
+	  <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/MELISSANIDIS.jpg" alt="MELISSANIDIS" style="width:100%">
+      <p> Ομάδα: Α.Ε.Κ<br>
+	      Ηλικία: 67<br>
+		  Καταγωγή: Έλληνας<br>
+		  Εργασία:Εφοπλιστής<br>
+		  </p>
+      <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+    </div>
+	
+    <div class="w3-quarter">
+      <h2>Σαββίδης</h2>
+	  <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/touba-ola.jpg" alt="touba-ola" style="width:91%">
+      <p> Ομάδα: Π.Α.Ο.Κ<br>
+	      Ηλικία: 59<br>
+		  Καταγωγή: Ρώσος<br>
+		  Εργασία:Εφοπλιστής<br>
+		  </p>
+		  <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+       </div>
+	   
+    <div class="w3-quarter">
+      <h2>Μαρινάκης</h2>
+	  <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/marinakis.jpg" alt="marinakis" style="width:100%">
+      <p> Ομάδα: Ολυμπιακός<br>
+	      Ηλικία: 50<br>
+		  Καταγωγή: Έλληνας<br>
+		  Εργασία:Εφοπλιστής<br>
+		  </p>
+		  <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+       </div>
+	
+	<div class="w3-quarter">
+      <h2>Αλαφούζος</h2>
+	  <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/alafouzos.jpg" alt="alafouzos" style="width:100%">
+      <p> Ομάδα: Π.Α.Ο<br>
+	      Ηλικία: 60<br>
+		  Καταγωγή: Έλληνας<br>
+		  Εργασία:Εφοπλιστής<br>
+		  </p>
+		  <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+       </div>
+  
+  </div>
+  </div>
+  
+  <!-- Header -->
+<div class="header">
+  <h1>Οι φωτογραφίες μας</h1>
+  <div style="background-color:grey;color:white;padding:10px;">
+  <p>Μία μεγάλη γκάμα φωτογραφιών όπως ομάδες,γήπεδα,οπαδοί,σήματα ομάδων κ.α σε περιμένουν να τα δείς. Μη ξεχάσεις αν θέλεις να δείς τη δική σου φωτογραφία τότε πρόσθεσέ τη στη κατηγορία Add new Photos.</p>
+</div>
+  </div>
+
+<!-- Photo-Gallery -->
+<div class="row"> 
+  <div class="column">
+  <h3>Ομάδες</h3>
+    <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/aek-foto.jpg" style="width:100%">
+	<p>AEK-team</p>
+    <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/osfp_omada.jpg" style="width:100%">
+	<p>Gay-ros team</p>
+    <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/pao_omada.jpg" style="width:100%">
+	<p>Lagos-team</p>
+    <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/asteras-omada.jpg" style="width:100%">
+	<p>Asteras-team</p>
+    <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/boca.jpg" style="width:100%">
+	<p>Boca-team</p>
+    <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/iraklis_omada.jpg" style="width:100%">
+	<p>Gria-team</p>
+  </div>
+  <div class="column">
+  <h3>Ποδοσφαιριστές</h3>
+    <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/araujo.jpg" style="width:100%">
+	<p>Araujo</p>
+    <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/manolas-niniadis.jpg" style="width:100%">
+	<p>Πνίξε τον κοντό</p>
+    <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/koutroubauer.jpg" style="width:100%">
+	<p>Κουτρουμπάουερ</p>
+    <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/prijio-goal-olympiakos.jpg" style="width:100%">
+	<p>Prijiovits</p>
+    <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/demaros.jpg" style="width:100%">
+	<p>Ντέμαρος</p>
+    <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/taxtsidis.jpg" style="width:100%">
+	<p>Ταχτσίδης(περαιτέρω)</p>
+  </div>  
+  <div class="column">
+  <h3>Πρόεδροι</h3>
+    <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/MELISSANIDIS.jpg" style="width:100%">
+	<p>Τίγρης</p>
+    <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/touba-ola.jpg" style="width:100%">
+	<p>Ivan(pistolero)</p>
+    <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/abelale.jpg" style="width:100%">
+	<p>Μαρινάκης</p>
+    <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/makis.jpg" style="width:100%">
+	<p>Μάκης(Αγαπούλα)</p>
+    <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/alafouzos.jpg" style="width:100%">
+	<p>Φραγκαφούζος</p>
+    <img src="C:\Users\roi\Desktop\project.programmatismou\eikones balas/savas.jpg" style="width:100%">
+	<p>Σάββας(Κερατάς)</p>
+    
+  </div>
+  <div class="column">
+  <h3>Δίαφορα Videos</h3>
+    <iframe width="280" height="163"
+      src="https://www.youtube.com/embed/CkHq1ZX6zY0">
+      </iframe>
+	<p>Αεκ(Πρωταθλήτρια)</p>
+	
+    <iframe width="280" height="163"
+      src="https://www.youtube.com/embed/GE6Xh0b2gp8">
+      </iframe>
+	<p>Σούπερ Λίγδα</p>
+	
+    <iframe width="280" height="163"
+      src="https://www.youtube.com/embed/yngnAa3_OWM">
+      </iframe>
+	<p>Μεγάλη Μάχη</p>
+	
+    <iframe width="280" height="163"
+      src="https://www.youtube.com/embed/tDg2vs94pWE">
+      </iframe>
+	<p>Αμπελαλέ</p>
+	
+    <iframe width="280" height="163"
+      src="https://www.youtube.com/embed/3HKzV2HVBK8">
+      </iframe>
+	<p>Έεεερχεται</p>
+	
+    <iframe width="280" height="163"
+      src="https://www.youtube.com/embed/w_i5W3gIRHg">
+      </iframe>
+	  <p>Προπονητάρες</p>
+	  
+	  
+	  <iframe width="280" height="163"
+      src="https://www.youtube.com/embed/Xmb0KxOOH6U">
+      </iframe>
+	  <p>Υπερκούπωση</p>
+	  
+	  <iframe width="280" height="163"
+      src="https://www.youtube.com/embed/cgyhsF53484/">
+      </iframe>
+	  <p>Γεωργίου the best</p>
+	  
+	  <iframe width="280" height="163"
+      src="https://www.youtube.com/embed/oOLJc2hRtVw/">
+      </iframe>
+	  <p>Αλέφας</p>
+	  
+	
+  </div>
+</div>
+  
+  </body>
+  </html>
+  
+  
