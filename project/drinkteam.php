@@ -1,3 +1,4 @@
+<?php session_start(); //ksekinaei ena session. ?>
 <!DOCTYPE html>
 <html>
 <title>Drinkteam Template</title>
@@ -101,17 +102,84 @@ form {
 	</div>
 	</div>
 	
-<form action="/action_page.php">
+<?php
+	if(isset($_POST["username"])){
+					//Syndeetai me thn bash , me stoixeia sundeshs localhost pou einai o server server. admin username kai password admin.
+					$servername = "localhost";
+					$username = "roinas";
+					$password = "roinas";
+
+					// Create connection
+					$conn = new mysqli($servername, $username, $password,"project");
+
+					// Check connection
+					if ($conn->connect_error) {
+						die("Connection failed: " . $conn->connect_error);
+					} 
+					//echo "Connected successfully";
+					// epilegeis apo ton server thn bash project
+											
+					
+					
+					//$sql = "INSERT INTO USERS (USERNAME,PASSWORD,LASTNAME,FIRSTNAME,EMAIL ) VALUES('ANAGNOSG1','KODIKOS','ANAGNOSG','GEORGE','ANAGNOSG@GMAIL.COM')";
+					//SELECT * FROM users where USERNAME = 'anagnosg' and PASSWORD = 'anagnosg'
+					
+					$sql = "SELECT * FROM users where USERNAME = '".$_POST["username"]."' and PASSWORD = '".$_POST["password"]."'";	
+					
+					
+					$found = 0;
+					
+					//EKTELESH  QUERY
+					$result = $conn->query($sql);
+					if ($result->num_rows > 0) {
+						$found = 1;
+
+						}
+					//kleineis to konnection me thn bash.
+					$conn->close();
+                    // bgazeis mhnimata.
+					
+					
+					if ($found) {
+						$_SESSION["USER"] = $_POST["username"];
+                        ?><script> window.location.href = "drinkteam.php" </script><?php
+                        
+					}
+					else{
+                        
+						echo "Το όνομα χρήστη ή ο κωδικός πρόσβασης δεν είναι έγκυρος!";
+                        echo "<script>setTimeout(\"location.href = 'drinkteam.php';\",1500);</script>";
+                        
+					}
+                    
+					
+	}
+?>
+<?php 
+if (isset($_SESSION["USER"])){
+	echo "Καλως ήρθες".$_SESSION["USER"]; 
+?>
+	
+<?php
+}
+else { 
+?>
+
+
+
+<form method="POST">
   Username:<br>
-  <input type="text" name="firstname" value="username">
+  <input type="text" name="username" value="">
   <br>
   Password:<br>
-  <input type="text" name="lastname" value="***************">
+  <input type="password" name="password" value="">
   <br><br>
- <button type="button" onclick="alert('Είσοδος!')">Είσοδος</button><Br><br>
+ <button type="submit" >Είσοδος</button><Br><br>
   <a href="#" style="color:blue">Νέος&nbspχρήστης?</a><br><br>
   </form> 
-
+<?php
+}
+  ?>
   <!-- Footer -->
 <footer class="w3-container w3-padding-32 w3-light-grey w3-center w3-large"> 
   <i class="fa fa-facebook-official w3-hover-opacity"></i>

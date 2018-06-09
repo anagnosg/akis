@@ -1,8 +1,11 @@
+﻿<?php session_start(); //ksekinaei ena session. ?>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-
+<?php
+header('Content-Type:text/html; charset=UTF-8');
+?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {
@@ -74,6 +77,8 @@ a {
 
 
 <?php
+header('Content-Type:text/html; charset=UTF-8');
+
 				if(isset($_POST["username"])){
 					//Syndeetai me thn bash , me stoixeia sundeshs localhost pou einai o server server. admin username kai password admin.
 					$servername = "localhost";
@@ -87,23 +92,10 @@ a {
 					if ($conn->connect_error) {
 						die("Connection failed: " . $conn->connect_error);
 					} 
-					echo "Connected successfully";
+					//echo "Connected successfully";
 					// epilegeis apo ton server thn bash project
-					//mysql_select_db("project", $con);
-
-			//INSERT INTO USERS (USERNAME,PASSWORD,LASTNAME,FIRSTNAME,EMAIL ) VALUES('ANAGNOSG1','KODIKOS','ANAGNOSG','GEORGE','ANAGNOSG@GMAIL.COM')
-					/*$sql = "INSERT INTO `my_db`.`users_id` (`username`, `password`, `firstname`, `lastname`, `email`)".
-					"VALUES ('". mysql_real_escape_string($_POST["username"])
-					."', '".mysql_real_escape_string($_POST["password"])
-					."', '".mysql_real_escape_string($_POST["firstname"])
-					."', '".mysql_real_escape_string($_POST["lastname"])
-					."', '".mysql_real_escape_string($_POST["email"])
-					."');";			
-
+											
 					
-			
-			
-					mysql_query($sql);*/
 					
 					//$sql = "INSERT INTO USERS (USERNAME,PASSWORD,LASTNAME,FIRSTNAME,EMAIL ) VALUES('ANAGNOSG1','KODIKOS','ANAGNOSG','GEORGE','ANAGNOSG@GMAIL.COM')";
 					
@@ -125,7 +117,7 @@ a {
 				}
 				else {
 					?>
-<form method="POST">
+<form method="POST" >
 
     
     
