@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       #map {
+        height: 800px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+  
+ <form action="/action_page.php">
+  <div align="right">
+  Search map:
+  <input type="search" name="searchmap">
+  <input type="submit"></div>
+</form><br>
+
+ <form action="/action_page.php" method="get" align="left-side" >
+  
+  <input type="checkbox" name="soccer" value="Team"checked>Ομάδα<br>
+  
+  <input type="checkbox" name="soccer" value="Player">Ποδοσφαιριστής<br>
+  
+  <input type="checkbox" name="soccer" value="Coach">Προπονητής<br>
+  
+  <input type="checkbox" name="soccer" value="President">Πρόεδρος<br>
+  <input type="submit" value="Submit">
+</form>
+ 
+
+
+  <div align="center">
+    <h2>Χάρτης Εφαρμογής</h2>
+    <div id="map"></div>
+	</div>
+	
+	
+	
+    <script>
+      function Mymap() {
+	  //omades
+        var Aek = {lat: 38.037423 , lng: 23.741779};
+        var Gayros = new google.maps.LatLng(37.946585 , 23.6644);
+		var Lagos = new google.maps.LatLng(37.987166 , 23.754249);
+		var Asteras = new google.maps.LatLng(37.502774 , 22.388541);
+		var Paok = new google.maps.LatLng(40.613858 , 22.972241);
+		var Iraklis = new google.maps.LatLng(40.6286 , 22.963668);
+		//podosferistes
+		var Araujo = new google.maps.LatLng(38.038685 , 23.786406);
+		var manolas = new google.maps.LatLng(37.102103 ,25.376114 );
+		var koutroubaouer = new google.maps.LatLng(37.987093 ,23.760262);
+		var Prijiovits = new google.maps.LatLng(44.016521 ,21.006000);
+		var Demis = new google.maps.LatLng(40.845719 ,25.873962);
+		var Taxtsidis = new google.maps.LatLng(37.857187 ,23.753429);
+		//proedroi
+		var tigris = new google.maps.LatLng(37.970112, 23.642364);
+		var ivan = new google.maps.LatLng(41.616755, 41.636745);
+		var marinakis = new google.maps.LatLng(37.942986, 23.646983);
+		var makis = new google.maps.LatLng(40.937607, 24.412866);
+		var alafouzos = new google.maps.LatLng(36.416649, 25.432447);
+		var savas = new google.maps.LatLng(37.989108, 23.763439);
+		//katigoria omades(yparxei pineza aek,paok,osfp)
+	    var Atromitos = new google.maps.LatLng(38.010972 ,23.688744);
+		//katigoria podosfairistes
+		var lazaros = new google.maps.LatLng(40.693312 ,22.858189);
+		var kourbelis = new google.maps.LatLng(37.289167 ,22.778611);
+		var livaja = new google.maps.LatLng(43.508132 ,16.440193);
+		//katigoria proponites
+		var Jiménez= new google.maps.LatLng(37.259335 ,-5.543422);
+		var Lucescu= new google.maps.LatLng(44.426767 ,26.102538);
+		var Ouzounidis= new google.maps.LatLng(41.347649, 26.495637);
+		var Padelidis= new google.maps.LatLng(37.98381 ,23.727539);
+		
+		var map = new google.maps.Map(document.getElementById('map'), {
+		
+          zoom: 4.5,
+          center: Aek
+        });
+        
+		var marker1 = new google.maps.Marker({
+          position: Aek,
+		  animation: google.maps.Animation.BOUNCE,
+          map:map
+		});
+		  var infowindow = new google.maps.InfoWindow({
+        content: "AEK!"
+        });
+        infowindow.open(map,marker1);
+   
+		
+		var marker2 = new google.maps.Marker({
+		position: Gayros,
+		animation: google.maps.Animation.BOUNCE,
+          map:map
+		});
+		var infowindow = new google.maps.InfoWindow({
+        content: "ΠΕΛΑΤΗΣ!"
+        });
+        infowindow.open(map,marker2);
+  
+		var marker3 = new google.maps.Marker({
+		position: Lagos,
+		animation: google.maps.Animation.BOUNCE,
+          map:map
+		});
+		
+		var marker4 = new google.maps.Marker({
+		position: Asteras,
+		animation: google.maps.Animation.BOUNCE,
+          map:map
+		});
+		var infowindow = new google.maps.InfoWindow({
+        content: "Τριπολάρα!"
+        });
+        infowindow.open(map,marker4);
+  
+		var marker5 = new google.maps.Marker({
+		position: Paok,
+		animation: google.maps.Animation.BOUNCE,
+          map:map
+		});
+		var infowindow = new google.maps.InfoWindow({
+        content: "ΜΠΑΟΚ!"
+        });
+        infowindow.open(map,marker5);
+  
+		
+		
+		var marker6 = new google.maps.Marker({
+		position: Iraklis,
+		animation: google.maps.Animation.BOUNCE,
+          map:map
+		});
+		
+		//katigoria omades
+		var marker19 = new google.maps.Marker({
+		position: Atromitos,
+		animation: google.maps.Animation.BOUNCE,
+          map:map
+		});
+		var infowindow = new google.maps.InfoWindow({
+        content: "ΑΤΡΟΜΗΤΟΣ!"
+        });
+        infowindow.open(map,marker19);
+		
+		var marker7 = new google.maps.Marker({
+		position: Araujo,
+		icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+		map:map
+		});
+		var infowindow = new google.maps.InfoWindow({
+        content: "Araujo!"
+        });
+        infowindow.open(map,marker7);
+		
+		
+		var marker8 = new google.maps.Marker({ 
+        position: manolas ,
+		icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+		map:map
+		});
+		
+		
+		var marker9 = new google.maps.Marker({
+		position: koutroubaouer,
+		icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+		map:map
+		});
+		
+		var marker10 = new google.maps.Marker({
+		position: Prijiovits,
+		icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+		map:map
+		});
+		var infowindow = new google.maps.InfoWindow({
+        content: "Prijiovits!"
+        });
+        infowindow.open(map,marker10);
+		
+		var marker11 = new google.maps.Marker({
+		position: Demis,
+		icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+		map:map
+		});
+		
+		var marker12 = new google.maps.Marker({
+		position: Taxtsidis ,
+		icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+		map:map
+		});
+		
+		var marker13 = new google.maps.Marker({
+		position: tigris,
+		icon:'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+		map:map
+		});
+		var infowindow = new google.maps.InfoWindow({
+        content: "tigris!"
+        });
+        infowindow.open(map,marker13);
+		
+		
+		var marker14 = new google.maps.Marker({
+		position: ivan,
+		icon:'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+		map:map
+		});
+		var infowindow = new google.maps.InfoWindow({
+        content: "ivan!"
+        });
+        infowindow.open(map,marker14);
+		
+		
+		var marker15 = new google.maps.Marker({
+		position: marinakis,
+		icon:'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+		map:map
+		});
+		var infowindow = new google.maps.InfoWindow({
+        content: "marinakis!"
+        });
+        infowindow.open(map,marker15);
+		
+		var marker16 = new google.maps.Marker({
+		position: makis,
+		icon:'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+		map:map
+		});
+		
+		var marker17 = new google.maps.Marker({
+		position: alafouzos,
+		icon:'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+		map:map
+		});
+		var infowindow = new google.maps.InfoWindow({
+        content: "alafouzos!"
+        });
+        infowindow.open(map,marker17);
+		
+		var marker18 = new google.maps.Marker({
+		position: savas,
+		icon:'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+		map:map
+		});
+		
+		//katigoria podosfairistes
+		var marker20 = new google.maps.Marker({
+		position: lazaros ,
+		icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+		map:map
+		});
+		var infowindow = new google.maps.InfoWindow({
+        content: "lazaros!"
+        });
+        infowindow.open(map,marker20);
+		
+		var marker21 = new google.maps.Marker({
+		position:kourbelis  ,
+		icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+		map:map
+		});
+		var infowindow = new google.maps.InfoWindow({
+        content: "kourbelis!"
+        });
+        infowindow.open(map,marker21);
+		
+		var marker22 = new google.maps.Marker({
+		position: livaja ,
+		icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+		map:map
+		});
+		var infowindow = new google.maps.InfoWindow({
+        content: "livaja!"
+        });
+        infowindow.open(map,marker22);
+		
+		//katigoria proponites
+		var marker23 = new google.maps.Marker({
+		position: Jiménez ,
+		icon:'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+		map:map
+		});
+		var infowindow = new google.maps.InfoWindow({
+        content: "Jiménez!"
+        });
+        infowindow.open(map,marker23);
+		
+		var marker24 = new google.maps.Marker({
+		position: Lucescu ,
+		icon:'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+		map:map
+		});
+		var infowindow = new google.maps.InfoWindow({
+        content: "Lucescu!"
+        });
+        infowindow.open(map,marker24);
+		
+		var marker25 = new google.maps.Marker({
+		position: Ouzounidis ,
+		icon:'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+		map:map
+		});
+		var infowindow = new google.maps.InfoWindow({
+        content: "Ouzounidis!"
+        });
+        infowindow.open(map,marker25);
+		
+		var marker26 = new google.maps.Marker({
+		position: Padelidis ,
+		icon:'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+		map:map
+		});
+		var infowindow = new google.maps.InfoWindow({
+        content: "Padelidis!"
+        });
+        infowindow.open(map,marker26);
+		
+		
+		google.maps.event.addListener(marker,marker,'click',function(){
+		var infowindow = new google.maps.InfoWindow({
+			content:"Hello World!"
+		});
+		
+		infowindow.open(map,marker,marker);
+		});
+		
+      }
+    </script>
+    <script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdkm6AbRLgTlzXO82ohxR2uqYyVtq25Cg&callback=Mymap">
+	</script>
+  </body>
+</html>
+
