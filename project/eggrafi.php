@@ -91,7 +91,7 @@ a {
 					// epilegeis apo ton server thn bash project
 					//mysql_select_db("project", $con);
 
-			
+			//INSERT INTO USERS (USERNAME,PASSWORD,LASTNAME,FIRSTNAME,EMAIL ) VALUES('ANAGNOSG1','KODIKOS','ANAGNOSG','GEORGE','ANAGNOSG@GMAIL.COM')
 					/*$sql = "INSERT INTO `my_db`.`users_id` (`username`, `password`, `firstname`, `lastname`, `email`)".
 					"VALUES ('". mysql_real_escape_string($_POST["username"])
 					."', '".mysql_real_escape_string($_POST["password"])
@@ -100,8 +100,22 @@ a {
 					."', '".mysql_real_escape_string($_POST["email"])
 					."');";			
 
+					
+			
 			
 					mysql_query($sql);*/
+					
+					//$sql = "INSERT INTO USERS (USERNAME,PASSWORD,LASTNAME,FIRSTNAME,EMAIL ) VALUES('ANAGNOSG1','KODIKOS','ANAGNOSG','GEORGE','ANAGNOSG@GMAIL.COM')";
+					
+					$sql = "INSERT INTO USERS (USERNAME,PASSWORD,LASTNAME,FIRSTNAME,EMAIL ) VALUES('".$_POST["username"].
+					"','".$_POST["password"].
+					"','".$_POST["surname"].
+					"','".$_POST["firstname"].
+					"','".$_POST["e_mail"].
+					"')";
+					//EKTELESH  QUERY
+					$conn->query($sql);
+					
 					//kleineis to konnection me thn bash.
 					$conn->close();
                     // bgazeis mhnimata.
@@ -127,13 +141,13 @@ a {
     <INPUT type="text" name="confirm password" size="15" maxlength="15"> <BR>
     
     Όνομα: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    <INPUT type="text" name="Όνομα" size="15" maxlength="15"> <BR>
+    <INPUT type="text" name="firstname" size="15" maxlength="15"> <BR>
     
     Επίθετο: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    <INPUT type="text" name="Επίθετο" size="15" maxlength="15"> <BR>
+    <INPUT type="text" name="surname" size="15" maxlength="15"> <BR>
     
     e-mail:  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    <INPUT type="text" name="e-mail" size="15" maxlength="15"> <BR>
+    <INPUT type="text" name="e_mail" size="15" maxlength="15"> <BR>
     
     
     <hr>
