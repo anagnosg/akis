@@ -71,7 +71,47 @@ a {
 </head>
 <body>
 
-<form>
+
+
+<?php
+				if(isset($_POST["username"])){
+					//Syndeetai me thn bash , me stoixeia sundeshs localhost pou einai o server server. admin username kai password admin.
+					$servername = "localhost";
+					$username = "roinas";
+					$password = "roinas";
+
+					// Create connection
+					$conn = new mysqli($servername, $username, $password,"project");
+
+					// Check connection
+					if ($conn->connect_error) {
+						die("Connection failed: " . $conn->connect_error);
+					} 
+					echo "Connected successfully";
+					// epilegeis apo ton server thn bash project
+					//mysql_select_db("project", $con);
+
+			
+					/*$sql = "INSERT INTO `my_db`.`users_id` (`username`, `password`, `firstname`, `lastname`, `email`)".
+					"VALUES ('". mysql_real_escape_string($_POST["username"])
+					."', '".mysql_real_escape_string($_POST["password"])
+					."', '".mysql_real_escape_string($_POST["firstname"])
+					."', '".mysql_real_escape_string($_POST["lastname"])
+					."', '".mysql_real_escape_string($_POST["email"])
+					."');";			
+
+			
+					mysql_query($sql);*/
+					//kleineis to konnection me thn bash.
+					$conn->close();
+                    // bgazeis mhnimata.
+				    echo "Τα στοιχεία σας στάλθηκαν επιτυχως!!!";
+                    echo "<script>setTimeout(\"location.href = 'drinkteam.php';\",3000);</script>";
+                        
+				}
+				else {
+					?>
+<form method="POST">
 
     
     
@@ -100,11 +140,13 @@ a {
     <p>Η συμπλήρωση όλων των πεδίων είνα υποχρεωτική</p>
 
     <button type="submit" class="register">Εγγραφή</button>
-    <button type="submit" class="register">Καθαρισμός Πεδίων</button>
+    <button type="reset" class="register">Καθαρισμός Πεδίων</button>
   </div>
   
   
 </form>
-
+<?php
+				}
+?>
 </body>
 </html>
