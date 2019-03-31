@@ -73,7 +73,7 @@ private static final Logger LOG = Logger.getLogger(Login_logResource.class.getNa
 			return Response.ok(rep).build();
 
 		} catch (Exception e) {
-			
+			LOG.info(e.getMessage());
 			rep.setError(new ErrorHandling(e).getErrorMessage(), Status.INTERNAL_SERVER_ERROR.getStatusCode());
 			return Response.status(Status.INTERNAL_SERVER_ERROR.getStatusCode()).entity(rep).build();
 		}
