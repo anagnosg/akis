@@ -1,4 +1,4 @@
-package gr.akis.paraga.api;
+package gr.akis.handsapp.api;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -14,11 +14,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import gr.akis.paraga.business.PersonBs;
-import gr.akis.paraga.business.TeamBs;
-import gr.akis.paraga.models.Person;
-import gr.akis.paraga.models.Team;
-import gr.akis.paraga.utils.ErrorHandling;
+import gr.akis.handsapp.business.PersonBs;
+import gr.akis.handsapp.business.TeamBs;
+import gr.akis.handsapp.models.Person;
+import gr.akis.handsapp.models.Team;
+import gr.akis.handsapp.utils.ErrorHandling;
 import gr.anagnosg.schoolservices.models.ResponseModel;
 import gr.anagnosg.utis.GsonUtils;
 import io.swagger.annotations.Api;

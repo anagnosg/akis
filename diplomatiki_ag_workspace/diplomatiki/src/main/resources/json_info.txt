@@ -1,0 +1,77 @@
+{
+  "success": true,
+  "data": [
+    {
+      "name": "George",
+      "surname": "Anagnostopoulos",
+      "email": "anagnosg@gmail.com",
+      "address": "Psiloreitou 13,Agios Dhmitrios",
+      "phone": "6974348778",
+      "age": 38,
+      "id": 1
+    },
+    {
+      "name": "akindynos",
+      "surname": "roinas",
+      "email": "akro23@yahoo.gr",
+      "address": "nikolaou gianna 37,perissos",
+      "phone": "6936564090",
+      "age": 30,
+      "id": 2
+    }
+  ],
+  "message": "Success",
+  "code": 0
+}
+
+
+
+Αυτό είναι ένα json.
+
+
+Και αυτό είναι ενα json
+{
+      "name": "George",
+      "surname": "Anagnostopoulos",
+      "email": "anagnosg@gmail.com",
+      "address": "Psiloreitou 13,Agios Dhmitrios",
+      "phone": "6974348778",
+      "age": 38,
+      "id": 1
+    }
+
+Αυτό είναι ένα json του αντικειμένου ag κλάσης Student.
+{} Στο json είναι ένα κενό αντικείμενο.
+
+"name": "George" Αυτό σημαίνει ότι αφού είναι μέσα στε {} είναι το property του αντικειμένου. Το property με όνομα name. Το "George" είναι η τιμή του property.
+Με ,  διαχωρίζουμε τα properties.
+
+
+[] συμαίνει λίστα/ πίνακας από αντικειμενα.
+
+Όταν γράψω αυτό 
+
+[
+    {
+      "name": "George",
+      "surname": "Anagnostopoulos",
+      "email": "anagnosg@gmail.com",
+      "address": "Psiloreitou 13,Agios Dhmitrios",
+      "phone": "6974348778",
+      "age": 38,
+      "id": 1
+    },
+    {
+      "name": "akindynos",
+      "surname": "roinas",
+      "email": "akro23@yahoo.gr",
+      "address": "nikolaou gianna 37,perissos",
+      "phone": "6936564090",
+      "age": 30,
+      "id": 2
+    }
+  ]
+
+σημαίνει ότι έχω μια λίστα από αντικείμενα student , με τις τιμές που έχουν.
+ 
+

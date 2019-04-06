@@ -1,4 +1,4 @@
-package gr.akis.paraga;
+package gr.akis.handsapp;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,11 +10,11 @@ import javax.inject.Inject;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-import gr.akis.paraga.api.Login_logResource;
-import gr.akis.paraga.api.PersonResource;
-import gr.akis.paraga.api.TeamResource;
-import gr.akis.paraga.api.UserResource;
-import gr.akis.paraga.api.VathmologiaResource;
+import gr.akis.handsapp.api.Login_logResource;
+import gr.akis.handsapp.api.PersonResource;
+import gr.akis.handsapp.api.TeamResource;
+import gr.akis.handsapp.api.UserResource;
+import gr.akis.handsapp.api.VathmologiaResource;
 
 import gr.anagnosg.employeeservices.config.Settings;
 
@@ -25,12 +25,12 @@ import io.swagger.jaxrs.config.BeanConfig;
 
 @ApplicationPath("/api")
 @ApplicationScoped
-public class ParagaServicesApplication extends Application {
-	private static final Logger LOG = Logger.getLogger(ParagaServicesApplication.class.getName());
+public class handsappServicesApplication extends Application {
+	private static final Logger LOG = Logger.getLogger(handsappServicesApplication.class.getName());
 	@Inject
 	Settings settings;
 
-	public ParagaServicesApplication() {
+	public handsappServicesApplication() {
 
 	}
 
@@ -48,9 +48,9 @@ public class ParagaServicesApplication extends Application {
 			/*beanConfig.setBasePath(settings.getProtocol() + "://" + settings.getHost() + ":" + settings.getPort() + "/"
 					+ settings.getBasePath());
 			*/
-			beanConfig.setResourcePackage("gr.akis.paraga.api");
+			beanConfig.setResourcePackage("gr.akis.handsapp.api");
 			beanConfig.setScan(true);
-			LOG.info("Paraga started!");
+			LOG.info("handsapp started!");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
