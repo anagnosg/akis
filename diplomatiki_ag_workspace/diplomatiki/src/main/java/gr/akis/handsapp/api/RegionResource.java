@@ -16,8 +16,8 @@ import javax.ws.rs.core.Response.Status;
 
 import gr.akis.handsapp.business.RegionBs;
 import gr.akis.handsapp.models.ResponseModel;
+import gr.akis.handsapp.models.Region.Requests.CreateRegionRequest;
 import gr.akis.handsapp.models.Region.Responses.Region;
-import gr.akis.handsapp.models.Service.Requests.CreateServiceRequest;
 import gr.akis.handsapp.utils.GsonUtils;
 import io.swagger.annotations.Api;
 
@@ -57,7 +57,7 @@ public class RegionResource {
 	@Path("")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response insert(CreateServiceRequest request) {
+	public Response insert(CreateRegionRequest request) {
 		ResponseModel<Region> rep = new ResponseModel<Region>();
 		try {
 			Region region = new Region();

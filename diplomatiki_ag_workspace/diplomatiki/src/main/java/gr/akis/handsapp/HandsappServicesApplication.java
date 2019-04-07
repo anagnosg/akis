@@ -15,6 +15,7 @@ import gr.akis.handsapp.api.ServicesResource;
 import gr.akis.handsapp.api.UserResource;
 import gr.akis.handsapp.api.VathmologiaResource;
 import gr.akis.handsapp.api.VenueCategoriesResource;
+import gr.akis.handsapp.api.VenuesResource;
 import gr.akis.handsapp.config.Settings;
 import io.swagger.jaxrs.config.BeanConfig;
 
@@ -57,6 +58,7 @@ public class HandsappServicesApplication extends Application {
 		resources.add(ServicesResource.class);
 		resources.add(RegionResource.class);
 		resources.add(VenueCategoriesResource.class);
+		resources.add(VenuesResource.class);
 		resources.add(io.swagger.jaxrs.listing.ApiListingResource.class);
 		resources.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
 
