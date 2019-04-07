@@ -28,67 +28,74 @@ import io.swagger.annotations.Api;
 @Consumes("application/json")
 @Produces("application/json")
 public class UserResource {
-private static final Logger LOG = Logger.getLogger(UserResource.class.getName()); //Logger xrhsimopoieitai gia na katagraefis ston log tou application server tis energeies pou ginontai 
+	// Logger xrhsimopoieitai gia na
+	// katagraefis ston log tou
+	// application server tis
+	// energeies pou ginontai
+	private static final Logger LOG = Logger.getLogger(UserResource.class.getName()); 
 
 	@Inject
 	UserBs userBS;
 	@Inject
-	GsonUtils gsUtils; // GsonUtils gsUtils = new GsonUtils(); 
- 
-	@GET  //AUTA pou ksekinane me @ einai annotations 
-	@Path("/user_password")  //Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
+	GsonUtils gsUtils; // GsonUtils gsUtils = new GsonUtils();
+
+	@GET // AUTA pou ksekinane me @ einai annotations
+	@Path("/user_password") // Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response user_password(@QueryParam("username") String username,@QueryParam("password")String password) {
-		
-		//Το E του response Model είναι μια λίστα απο student , List<Student>
+	public Response user_password(
+			@QueryParam("username") String username,
+			@QueryParam("password") String password) {
+
+		// Το E του response Model είναι μια λίστα απο student , List<Student>
 		ResponseModel<List<User>> rep = new ResponseModel<List<User>>(); // Orismos antikeimenou rep
-		try {  
-			List<User> list = userBS.selectUser(username,password); 
-			//sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
+		try {
+			List<User> list = userBS.selectUser(username, password);
+			// sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
 			rep.setData(list);
 			LOG.info("End all");
 			return Response.ok(rep).build();
 
 		} catch (Exception e) {
-			
+
 			rep.setError(new ErrorHandling(e).getErrorMessage(), Status.INTERNAL_SERVER_ERROR.getStatusCode());
 			return Response.status(Status.INTERNAL_SERVER_ERROR.getStatusCode()).entity(rep).build();
 		}
 	}
-	@GET  //AUTA pou ksekinane me @ einai annotations 
-	@Path("/all")  //Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
+
+	@GET // AUTA pou ksekinane me @ einai annotations
+	@Path("/all") // Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Response all() {
-		
-		//Το E του response Model είναι μια λίστα απο student , List<Student>
+
+		// Το E του response Model είναι μια λίστα απο student , List<Student>
 		ResponseModel<List<User>> rep = new ResponseModel<List<User>>(); // Orismos antikeimenou rep
-		try {  
-			List<User> list = userBS.selectAll(); 
-			//sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
+		try {
+			List<User> list = userBS.selectAll();
+			// sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
 			rep.setData(list);
 			LOG.info("End all");
 			return Response.ok(rep).build();
 
 		} catch (Exception e) {
-			
+
 			rep.setError(new ErrorHandling(e).getErrorMessage(), Status.INTERNAL_SERVER_ERROR.getStatusCode());
 			return Response.status(Status.INTERNAL_SERVER_ERROR.getStatusCode()).entity(rep).build();
 		}
 	}
-	@POST  //AUTA pou ksekinane me @ einai annotations 
-	@Path("/insert")  //Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
+
+	@POST // AUTA pou ksekinane me @ einai annotations
+	@Path("/insert") // Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Response insert(User users) {
-		
-		 
+
 		ResponseModel<User> rep = new ResponseModel<User>(); // Orismos antikeimenou rep
-		try {  
-			 
-			users = userBS.insert(users); 
-			//sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
+		try {
+
+			users = userBS.insert(users);
+			// sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
 			rep.setData(users);
 			LOG.info("End all");
 			return Response.ok(rep).build();
@@ -99,20 +106,18 @@ private static final Logger LOG = Logger.getLogger(UserResource.class.getName())
 			return Response.ok(rep).build();
 		}
 	}
-	
 
-	@POST  //AUTA pou ksekinane me @ einai annotations 
-	@Path("/update")  //Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
+	@POST // AUTA pou ksekinane me @ einai annotations
+	@Path("/update") // Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Response update(User users) {
-		
-		 
+
 		ResponseModel<User> rep = new ResponseModel<User>(); // Orismos antikeimenou rep
-		try {  
-			 
-			users = userBS.update(users); 
-			//sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
+		try {
+
+			users = userBS.update(users);
+			// sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
 			rep.setData(users);
 			LOG.info("End all");
 			return Response.ok(rep).build();
@@ -123,19 +128,18 @@ private static final Logger LOG = Logger.getLogger(UserResource.class.getName())
 			return Response.ok(rep).build();
 		}
 	}
-	
-	@DELETE //AUTA pou ksekinane me @ einai annotations 
-	@Path("/delete")  //Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
+
+	@DELETE // AUTA pou ksekinane me @ einai annotations
+	@Path("/delete") // Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Response delete(User Users) {
-		
-		 
+
 		ResponseModel<User> rep = new ResponseModel<User>(); // Orismos antikeimenou rep
-		try {  
-			 
-			Users = userBS.delete(Users); 
-			//sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
+		try {
+
+			Users = userBS.delete(Users);
+			// sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
 			rep.setData(Users);
 			LOG.info("End all");
 			return Response.ok(rep).build();
@@ -147,6 +151,3 @@ private static final Logger LOG = Logger.getLogger(UserResource.class.getName())
 		}
 	}
 }
-
-
-
