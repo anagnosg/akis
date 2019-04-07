@@ -1,6 +1,9 @@
 package gr.akis.handsapp.models.Venue.Responses;
 
+import java.util.List;
+
 import gr.akis.handsapp.models.Region.Responses.Region;
+import gr.akis.handsapp.models.Service.Responses.Service;
 import gr.akis.handsapp.models.VenueCategory.Responses.VenueCategory;
 
 public class Venues {
@@ -12,6 +15,21 @@ public class Venues {
 	Integer regionId;
 	Region region;
 	String summary;
+	List<Integer> serviceIds;
+	List<Service> services;
+	
+	public List<Integer> getServiceIds() {
+		return serviceIds;
+	}
+	public void setServiceIds(List<Integer> serviceIds) {
+		this.serviceIds = serviceIds;
+	}
+	public List<Service> getServices() {
+		return services;
+	}
+	public void setServices(List<Service> services) {
+		this.services = services;
+	}
 	public Integer getCategoryId() {
 		return categoryId;
 	}

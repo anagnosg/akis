@@ -41,6 +41,7 @@ public class VenuesBs {
 		venue.setCategoryId(request.getCategory());
 		venue.setAddress(request.getAddress());
 		venue.setSummary(request.getSummary());
+		venue.setServiceIds(request.getServices());
 		return venueDB.insert(venue);
 	}
 	
