@@ -7,13 +7,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
-
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-
-//import org.jboss.security.auth.spi.Users;
-
 import gr.akis.handsapp.models.User.Token;
 import gr.akis.handsapp.models.User.Response.User;
 import gr.akis.handsapp.utils.ConnectionWrapper;
@@ -26,12 +23,6 @@ public class UserDB {
 	public UserDB() {
 	}
 
-	/**
-	 * Finds all users
-	 * 
-	 * @return
-	 * @throws SQLException
-	 */
 	public List<User> selectAll() throws SQLException {
 		List<User> users = new ArrayList<User>();
 
@@ -153,9 +144,30 @@ public class UserDB {
 		return userId;
 	}
 
-	
-	public Token insertToken(Token token) throws SQLException
-	{
+	public Token selectToken(String tokenString) throws SQLException {
+		String sql = "SELECT ID,TOKEN ,USERID,EXPIRE FROM  TOKENS where TOKEN = ? and EXPIRE > ? ";
+
+		try (PreparedStatement pstate = this.connWrapper.getConnection().prepareStatement(sql);) {
+
+			pstate.setString(1, tokenString);
+			Timestamp time = new java.sql.Timestamp(Calendar.getInstance().getTimeInMillis());
+			pstate.setTimestamp(2, time);
+			try (ResultSet rs = pstate.executeQuery();) {
+				if (rs.next()) {
+
+					Token t = new Token();
+					t.setId(rs.getInt("ID"));
+					t.setUserId(rs.getInt("USERID"));
+
+					return t;
+				}
+			}
+		}
+		return null;
+
+	}
+
+	public Token insertToken(Token token) throws SQLException {
 		String sql = "INSERT INTO TOKENS (TOKEN ,USERID,EXPIRE) " + "VALUES (?,?,?)";
 		Connection conn = this.connWrapper.getConnection();
 		PreparedStatement pstate = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -167,18 +179,18 @@ public class UserDB {
 			pstate.executeUpdate();
 			try (ResultSet generatedKeys = pstate.getGeneratedKeys()) {
 				if (generatedKeys.next()) {
-					// eprnouem to epomeno identity. badoume to id sto antikeimeno mas.
+					
 					token.setId(generatedKeys.getInt(1));
 				}
 			}
 		}
-		// to finaly 8a ektelestei panta sto telos tou try oti kai na ginei sto try
+	
 		finally {
 			if (pstate != null) {
 				pstate.close();
 			}
 		}
-		return token; 
+		return token;
 	}
 
 	public void deleteTokens(Integer userId) throws SQLException {

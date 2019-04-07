@@ -11,9 +11,9 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 import gr.akis.handsapp.api.RegionResource;
+import gr.akis.handsapp.api.ScoreResource;
 import gr.akis.handsapp.api.ServicesResource;
 import gr.akis.handsapp.api.UserResource;
-import gr.akis.handsapp.api.VathmologiaResource;
 import gr.akis.handsapp.api.VenueCategoriesResource;
 import gr.akis.handsapp.api.VenuesResource;
 import gr.akis.handsapp.config.Settings;
@@ -53,7 +53,7 @@ public class HandsappServicesApplication extends Application {
 	public Set<Class<?>> getClasses() {
 		Set<Class<?>> resources = new HashSet();
 
-		resources.add(VathmologiaResource.class);
+		resources.add(ScoreResource.class);
 		resources.add(UserResource.class);
 		resources.add(ServicesResource.class);
 		resources.add(RegionResource.class);

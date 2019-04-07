@@ -70,7 +70,7 @@ public class VenuesDb {
 					r.setDescription(rs.getString("REGION"));
 					v.setRegion(r);
 
-					List<Service> services = selectServiceOfVenue(id);
+					List<Service> services = selectServiceOfVenue(v.getId());
 					List<Integer> serviceIds = new ArrayList<Integer>();
 					for (int i = 0; i < services.size(); i++) {
 						serviceIds.add(services.get(i).getId());

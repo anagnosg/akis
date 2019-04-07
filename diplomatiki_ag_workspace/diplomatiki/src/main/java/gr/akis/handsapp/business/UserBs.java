@@ -51,9 +51,7 @@ public class UserBs {
 		if (user == null) {
 			throw new BusinessException("Τα στοιχεία που δώσατε δεν είναι σωστά.");
 		}
-		//Delete previous tokens of the user
-		userDB.deleteTokens(user.getId());
-		
+				
 		String tokenString = java.util.UUID.randomUUID().toString();
 		Calendar expire = Calendar.getInstance();
 		expire.add(Calendar.HOUR, 1);// Expires in one hour
