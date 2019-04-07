@@ -22,61 +22,56 @@ public class UserBs {
 
 	@Inject
 	UserDB userDB;
-	 
 
 	public List<User> selectAll() throws SQLException {
 		List<User> users;
 		users = userDB.selectAll();
 		return users;
 	}
-	
-	
-public User insert(User users) throws SQLException{
-		
+
+	public User insert(User users) throws SQLException {
+
 		return userDB.insert(users);
 	}
-	
-	public User update(User users) throws SQLException{
-	
+
+	public User update(User users) throws SQLException {
+
 		return userDB.update(users);
 	}
-	
-	
-	public User delete(User users) throws SQLException{
-		
+
+	public User delete(User users) throws SQLException {
+
 		return userDB.delete(users);
 	}
 
-	public UserBs(){}
-	
-	public List<User> selectMathimaAllDummy() throws SQLException{
-		List<User> users = null; // 
+	public UserBs() {
+	}
+
+	public List<User> selectMathimaAllDummy() throws SQLException {
+		List<User> users = null; //
 		users = new ArrayList<User>();
-		
-		//Students  kai pro8hkh sthn lista. 
-		User u = new User(); //Orismos antikeimenou me onoma ag kai klash Student; Arxikopoihsh tou
+
+		// Students kai pro8hkh sthn lista.
+		User u = new User(); // Orismos antikeimenou me onoma ag kai klash Student; Arxikopoihsh tou
 		u.setId(1);
 		u.setUsername("akindynos");
 		users.add(u);
-		
-		
+
 		return users;
 	}
-	
-	
-	
-	public List<User> selectmathimaAll() throws SQLException{
-		List<User> users  ;
-	
-		users = userDB.selectAll();
-		 
-		return users;
-	}	
-	public List<User> selectUser(String username,String password) throws SQLException {
+
+	public List<User> selectmathimaAll() throws SQLException {
 		List<User> users;
-		users = userDB.selectUser(username,password);
+
+		users = userDB.selectAll();
+
 		return users;
 	}
-	
-	
+
+	public List<User> selectUser(String username, String password) throws SQLException {
+		List<User> users;
+		users = userDB.selectUser(username, password);
+		return users;
+	}
+
 }
