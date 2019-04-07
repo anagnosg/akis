@@ -16,11 +16,13 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import gr.akis.handsapp.business.UserBs;
+import gr.akis.handsapp.models.ResponseModel;
+import gr.akis.handsapp.models.User.Token;
 import gr.akis.handsapp.models.User.Requests.CreateUserRequest;
+import gr.akis.handsapp.models.User.Requests.LoginRequest;
 import gr.akis.handsapp.models.User.Response.User;
 import gr.akis.handsapp.utils.ErrorHandling;
-import gr.anagnosg.schoolservices.models.ResponseModel;
-import gr.anagnosg.utis.GsonUtils;
+import gr.akis.handsapp.utils.GsonUtils;
 import io.swagger.annotations.Api;
 
 @ApplicationScoped
@@ -49,13 +51,12 @@ public class UserResource {
 			@QueryParam("password") String password) {
 
 		// Το E του response Model είναι μια λίστα απο student , List<Student>
-		ResponseModel<List<User>> rep = new ResponseModel<List<User>>(); // Orismos antikeimenou rep
+		ResponseModel<User> rep = new ResponseModel<User>(); // Orismos antikeimenou rep
 		try {
-			List<User> list = userBS.selectUser(username, password,0);
+			User user = userBS.selectUser(username, password,0);
 			// sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
-			rep.setData(list);
+			rep.setData(user);
 			LOG.info("End all");
-			
 			return Response.ok(rep).build();
 
 		} catch (Exception e) {
@@ -65,6 +66,7 @@ public class UserResource {
 		}
 	}
 
+	
 	@GET // AUTA pou ksekinane me @ einai annotations
 	@Path("/all") // Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
 	@Consumes("application/json")
@@ -87,6 +89,28 @@ public class UserResource {
 		}
 	}
 
+	@POST // AUTA pou ksekinane me @ einai annotations
+	@Path("/login") // Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response login(LoginRequest request) {
+
+		ResponseModel<Token> rep = new ResponseModel<Token>(); // Orismos antikeimenou rep
+		try {
+
+			Token user = userBS.insertToken(request);
+			// sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
+			rep.setData(user);
+			LOG.info("End all");
+			return Response.ok(rep).build();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			rep.setError(e.getMessage(), Status.INTERNAL_SERVER_ERROR.getStatusCode());
+			return Response.ok(rep).build();
+		}
+	}
+	
 	@POST // AUTA pou ksekinane me @ einai annotations
 	@Path("/insert") // Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
 	@Consumes("application/json")
