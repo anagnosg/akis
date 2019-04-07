@@ -14,7 +14,8 @@ import javax.inject.Inject;
 //import org.jboss.security.auth.spi.Users;
 
 import gr.akis.handsapp.models.Team;
-import gr.akis.handsapp.models.User;
+import gr.akis.handsapp.models.User.Requests.CreateUserRequest;
+import gr.akis.handsapp.models.User.Response.User;
 import gr.anagnosg.employeeservices.db.utils.ConnectionWrapper;
 
 @RequestScoped
@@ -34,7 +35,7 @@ public class UserDB {
 	public List<User> selectAll() throws SQLException {
 		List<User> users = new ArrayList<User>();
 
-		String sql = "SELECT ID ,USERNAME,PASSWORD FROM  Diplomatiki_Login ";
+		String sql = "SELECT ID ,USERNAME,PASSWORD FROM  USERS ";
 
 		try (PreparedStatement pstate = this.connWrapper.getConnection().prepareStatement(sql);
 				ResultSet rs = pstate.executeQuery();) {
@@ -51,15 +52,34 @@ public class UserDB {
 		return users;
 	}
 
-	public List<User> selectUser(String username, String password) throws SQLException {
+	public List<User> selectUser(
+			String username,
+			String password,
+			int userId) throws SQLException {
 		List<User> users = new ArrayList<User>();
 
-		String sql = "SELECT ID ,USERNAME,PASSWORD FROM  Diplomatiki_Login " + "where username=? and password=?";
-		try (PreparedStatement pstate = this.connWrapper.getConnection().prepareStatement(sql);
-
-		) {
-			pstate.setString(1, username);
-			pstate.setString(2, password);
+		String sql = "SELECT ID ,USERNAME,PASSWORD,AGE,REGION_ID,EMAIL FROM  USERS " ;
+		if(userId!=0) 
+		{
+			sql+= "where ID=?";
+		}
+		else 
+		{
+			sql+= "where username=? and password=?";
+		}
+		
+				
+		try (PreparedStatement pstate = this.connWrapper.getConnection().prepareStatement(sql);) {
+			if(userId!=0) 
+			{
+				pstate.setInt(1, userId);
+			}
+			else 
+			{
+				pstate.setString(1, username);
+				pstate.setString(2, password);
+			}
+			
 			try (ResultSet rs = pstate.executeQuery();) {
 				while (rs.next()) {
 
@@ -67,7 +87,8 @@ public class UserDB {
 					u.setId(rs.getInt("ID"));
 					u.setPassword(rs.getString("USERNAME"));
 					u.setUsername(rs.getString("PASSWORD"));
-
+					u.setAge(rs.getInt("AGE"));
+					u.setEmail(rs.getString("EMAIL"));
 					users.add(u);
 				}
 			}
@@ -76,8 +97,8 @@ public class UserDB {
 	}
 
 	public User insert(User users) throws SQLException {
-
-		String sql = "INSERT INTO Diplomatiki_Login (USERNAME ,PASSWORD) VALUES (?,?)";
+		String sql = "INSERT INTO USERS (USERNAME ,PASSWORD,REGIOD_ID,EMAIL,AGE) "
+				+ "VALUES (?,?,?,?,?)";
 		// orismoume se ena string thn sql pou 8a treksoume
 		// Pernoume mia sundesh (connection) me thn bash
 		Connection conn = this.connWrapper.getConnection(); 
@@ -91,6 +112,9 @@ public class UserDB {
 			// pername tis patametrous
 			pstate.setString(1, users.getUsername()); 
 			pstate.setString(2, users.getPassword());
+			pstate.setInt(3, users.getRegionId());
+			pstate.setString(4, users.getEmail());
+			pstate.setInt(5, users.getAge());
 			// ekteloume to sql .Epeidh einai insert h updat ekteloume to
 			pstate.executeUpdate(); 
 			// execute update.
@@ -107,16 +131,14 @@ public class UserDB {
 		finally {
 			if (pstate != null) {
 				pstate.close();
-
 			}
 		}
-
 		return users;
 	}
 
 	public User update(User users) throws SQLException {
 
-		String sql = "update Diplomatiki_Login set username=? ,password=? where id = ?  ";
+		String sql = "update USERS set username=? ,password=? where id = ?  ";
 
 		try (PreparedStatement pstate = this.connWrapper.getConnection().prepareStatement(sql);) {
 			pstate.setString(1, users.getUsername());
@@ -128,14 +150,13 @@ public class UserDB {
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
-
 		}
 		return null;
 	}
 
 	public User delete(User users) throws SQLException {
 		int count = 0;
-		String sql = "  delete from Diplomatiki_Login where id = ?      ";
+		String sql = "  delete from USERS where id = ?      ";
 		try (PreparedStatement pstate = this.connWrapper.getConnection().prepareStatement(sql);) {
 			pstate.setInt(1, users.getId());
 			count = pstate.executeUpdate();

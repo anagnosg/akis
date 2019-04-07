@@ -7,11 +7,9 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import gr.akis.handsapp.db.TeamDB;
 import gr.akis.handsapp.db.UserDB;
-
-import gr.akis.handsapp.models.Team;
-import gr.akis.handsapp.models.User;
+import gr.akis.handsapp.models.User.Requests.CreateUserRequest;
+import gr.akis.handsapp.models.User.Response.User;
 import gr.anagnosg.employeeservices.db.utils.ConnectionWrapper;
 
 @RequestScoped
@@ -29,9 +27,14 @@ public class UserBs {
 		return users;
 	}
 
-	public User insert(User users) throws SQLException {
-
-		return userDB.insert(users);
+	public User insert(CreateUserRequest request) throws SQLException {
+		User user = new User();
+		user.setUsername(request.getUsername());
+		user.setPassword(request.getPassword());
+		user.setAge(request.getAge());
+		user.setEmail(request.getEmail());
+		user.setRegionId(request.getRegionId());
+		return userDB.insert(user);
 	}
 
 	public User update(User users) throws SQLException {
@@ -51,8 +54,9 @@ public class UserBs {
 		List<User> users = null; //
 		users = new ArrayList<User>();
 
-		// Students kai pro8hkh sthn lista.
-		User u = new User(); // Orismos antikeimenou me onoma ag kai klash Student; Arxikopoihsh tou
+		// Students kai pro8hkh sthn lista.Orismos antikeimenou me onoma ag kai klash
+		// Student; Arxikopoihsh tou
+		User u = new User();
 		u.setId(1);
 		u.setUsername("akindynos");
 		users.add(u);
@@ -68,9 +72,9 @@ public class UserBs {
 		return users;
 	}
 
-	public List<User> selectUser(String username, String password) throws SQLException {
+	public List<User> selectUser(String username, String password, int userId) throws SQLException {
 		List<User> users;
-		users = userDB.selectUser(username, password);
+		users = userDB.selectUser(username, password, userId);
 		return users;
 	}
 

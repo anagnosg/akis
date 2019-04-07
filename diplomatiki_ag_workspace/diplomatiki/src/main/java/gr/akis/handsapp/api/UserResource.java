@@ -16,7 +16,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import gr.akis.handsapp.business.UserBs;
-import gr.akis.handsapp.models.User;
+import gr.akis.handsapp.models.User.Requests.CreateUserRequest;
+import gr.akis.handsapp.models.User.Response.User;
 import gr.akis.handsapp.utils.ErrorHandling;
 import gr.anagnosg.schoolservices.models.ResponseModel;
 import gr.anagnosg.utis.GsonUtils;
@@ -50,10 +51,11 @@ public class UserResource {
 		// Το E του response Model είναι μια λίστα απο student , List<Student>
 		ResponseModel<List<User>> rep = new ResponseModel<List<User>>(); // Orismos antikeimenou rep
 		try {
-			List<User> list = userBS.selectUser(username, password);
+			List<User> list = userBS.selectUser(username, password,0);
 			// sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
 			rep.setData(list);
 			LOG.info("End all");
+			
 			return Response.ok(rep).build();
 
 		} catch (Exception e) {
@@ -89,14 +91,14 @@ public class UserResource {
 	@Path("/insert") // Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response insert(User users) {
+	public Response insert(CreateUserRequest request) {
 
 		ResponseModel<User> rep = new ResponseModel<User>(); // Orismos antikeimenou rep
 		try {
 
-			users = userBS.insert(users);
+			User user = userBS.insert(request);
 			// sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
-			rep.setData(users);
+			rep.setData(user);
 			LOG.info("End all");
 			return Response.ok(rep).build();
 
