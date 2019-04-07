@@ -9,7 +9,7 @@ import javax.inject.Inject;
 
 import gr.akis.handsapp.db.TeamDB;
 import gr.akis.handsapp.db.UserDB;
-import gr.akis.handsapp.models.Login_log;
+
 import gr.akis.handsapp.models.Team;
 import gr.akis.handsapp.models.User;
 import gr.anagnosg.employeeservices.db.utils.ConnectionWrapper;

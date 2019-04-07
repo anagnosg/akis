@@ -34,7 +34,7 @@ public class UserDB {
 	public List<User> selectAll() throws SQLException {
 		List<User> users = new ArrayList<User>();
 
-		String sql = "SELECT ID ,USERNAME,PASSWORD FROM  Users ";
+		String sql = "SELECT ID ,USERNAME,PASSWORD FROM  Diplomatiki_Login ";
 
 		try (PreparedStatement pstate = this.connWrapper.getConnection().prepareStatement(sql);
 				ResultSet rs = pstate.executeQuery();) {
@@ -54,7 +54,7 @@ public class UserDB {
 	public List<User> selectUser(String username, String password) throws SQLException {
 		List<User> users = new ArrayList<User>();
 
-		String sql = "SELECT ID ,USERNAME,PASSWORD FROM  Users " + "where username=? and password=?";
+		String sql = "SELECT ID ,USERNAME,PASSWORD FROM  Diplomatiki_Login " + "where username=? and password=?";
 		try (PreparedStatement pstate = this.connWrapper.getConnection().prepareStatement(sql);
 
 		) {
@@ -77,7 +77,7 @@ public class UserDB {
 
 	public User insert(User users) throws SQLException {
 
-		String sql = "INSERT INTO USERS (USERNAME ,PASSWORD) VALUES (?,?)";
+		String sql = "INSERT INTO Diplomatiki_Login (USERNAME ,PASSWORD) VALUES (?,?)";
 		// orismoume se ena string thn sql pou 8a treksoume
 		// Pernoume mia sundesh (connection) me thn bash
 		Connection conn = this.connWrapper.getConnection(); 
@@ -116,7 +116,7 @@ public class UserDB {
 
 	public User update(User users) throws SQLException {
 
-		String sql = "update Users set username=? ,password=? where id = ?  ";
+		String sql = "update Diplomatiki_Login set username=? ,password=? where id = ?  ";
 
 		try (PreparedStatement pstate = this.connWrapper.getConnection().prepareStatement(sql);) {
 			pstate.setString(1, users.getUsername());
@@ -135,7 +135,7 @@ public class UserDB {
 
 	public User delete(User users) throws SQLException {
 		int count = 0;
-		String sql = "  delete from Users where id = ?      ";
+		String sql = "  delete from Diplomatiki_Login where id = ?      ";
 		try (PreparedStatement pstate = this.connWrapper.getConnection().prepareStatement(sql);) {
 			pstate.setInt(1, users.getId());
 			count = pstate.executeUpdate();
