@@ -8,6 +8,7 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import gr.akis.handsapp.config.Settings;
 import gr.akis.handsapp.db.UserDB;
 import gr.akis.handsapp.exceptions.BusinessException;
 import gr.akis.handsapp.models.User.Token;
@@ -24,7 +25,8 @@ public class UserBs {
 
 	@Inject
 	UserDB userDB;
-
+	@Inject
+	Settings settings;
 	public UserBs() {
 	}
 
@@ -54,7 +56,7 @@ public class UserBs {
 				
 		String tokenString = java.util.UUID.randomUUID().toString();
 		Calendar expire = Calendar.getInstance();
-		expire.add(Calendar.HOUR, 1);// Expires in one hour
+		expire.add(Calendar.MINUTE, settings.getExpireInMinutes());// Expires in one hour
 		// Create token and insert it
 		Token token = new Token();
 		token.setToken(tokenString);

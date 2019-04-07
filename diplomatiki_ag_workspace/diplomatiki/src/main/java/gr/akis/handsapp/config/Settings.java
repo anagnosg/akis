@@ -10,7 +10,17 @@ public class Settings {
 	String port;
 	String protocol;
 	String host;
+	Integer expireInMinutes;
 	
+	
+	public Integer getExpireInMinutes() {
+		return expireInMinutes;
+	}
+
+	public void setExpireInMinutes(Integer expireInMinutes) {
+		this.expireInMinutes = expireInMinutes;
+	}
+
 	String datasourceName;
 	
 	ResourceBundle config ;
@@ -26,6 +36,7 @@ public class Settings {
 		this.protocol = config.getString("protocol");
 		this.host = config.getString("host");
 		this.datasourceName = config.getString("datasourceName");
+		this.expireInMinutes = Integer.parseInt(config.getString("expireInMinutes"));
 		
 	}
 
