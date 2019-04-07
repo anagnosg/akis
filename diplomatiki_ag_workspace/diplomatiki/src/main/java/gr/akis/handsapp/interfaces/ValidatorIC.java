@@ -1,4 +1,4 @@
-package gr.anagnosg.employeeservices.interfaces;
+package gr.akis.handsapp.interfaces;
 
 import java.io.Serializable;
 

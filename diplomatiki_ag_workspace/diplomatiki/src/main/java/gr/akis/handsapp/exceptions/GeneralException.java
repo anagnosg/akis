@@ -1,4 +1,4 @@
-package gr.anagnosg.employeeservices.exceptions;
+package gr.akis.handsapp.exceptions;
 
 public class GeneralException extends Exception {
 

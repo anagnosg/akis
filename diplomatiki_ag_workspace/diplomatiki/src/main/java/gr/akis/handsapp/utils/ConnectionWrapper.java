@@ -1,4 +1,4 @@
-package gr.anagnosg.employeeservices.db.utils;
+package gr.akis.handsapp.utils;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -9,7 +9,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.sql.DataSource;
 
-import gr.anagnosg.schoolservices.api.StudentResource;
 
 @RequestScoped
 public class ConnectionWrapper {
