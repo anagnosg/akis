@@ -1,4 +1,4 @@
-package gr.anagnosg.employeeservices.config;
+package gr.akis.handsapp.config;
 
 import java.util.ResourceBundle;
 

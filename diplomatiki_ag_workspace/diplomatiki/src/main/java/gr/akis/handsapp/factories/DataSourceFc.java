@@ -1,4 +1,4 @@
-package gr.anagnosg.employeeservices.factories;
+package gr.akis.handsapp.factories;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
@@ -6,8 +6,8 @@ import javax.inject.Inject;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
+import gr.akis.handsapp.config.Settings;
 
-import gr.anagnosg.employeeservices.config.Settings;
 
 @ApplicationScoped
 public class DataSourceFc {

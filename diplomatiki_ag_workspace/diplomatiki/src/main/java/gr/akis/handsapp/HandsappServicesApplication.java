@@ -3,14 +3,16 @@ package gr.akis.handsapp;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Logger;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
+
 import gr.akis.handsapp.api.UserResource;
 import gr.akis.handsapp.api.VathmologiaResource;
-import gr.anagnosg.employeeservices.config.Settings;
+import gr.akis.handsapp.config.Settings;
 import io.swagger.jaxrs.config.BeanConfig;
 
 @ApplicationPath("/api")
