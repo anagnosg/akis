@@ -85,8 +85,7 @@ public class UserDB {
 
 					User u = new User();
 					u.setId(rs.getInt("ID"));
-					u.setPassword(rs.getString("USERNAME"));
-					u.setUsername(rs.getString("PASSWORD"));
+					u.setUsername(rs.getString("USERNAME"));
 					u.setAge(rs.getInt("AGE"));
 					u.setEmail(rs.getString("EMAIL"));
 					users.add(u);
