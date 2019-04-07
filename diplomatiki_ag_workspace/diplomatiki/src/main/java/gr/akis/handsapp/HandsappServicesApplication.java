@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+import gr.akis.handsapp.api.RegionResource;
 import gr.akis.handsapp.api.ServicesResource;
 import gr.akis.handsapp.api.UserResource;
 import gr.akis.handsapp.api.VathmologiaResource;
@@ -53,6 +54,7 @@ public class HandsappServicesApplication extends Application {
 		resources.add(VathmologiaResource.class);
 		resources.add(UserResource.class);
 		resources.add(ServicesResource.class);
+		resources.add(RegionResource.class);
 		resources.add(io.swagger.jaxrs.listing.ApiListingResource.class);
 		resources.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
 
