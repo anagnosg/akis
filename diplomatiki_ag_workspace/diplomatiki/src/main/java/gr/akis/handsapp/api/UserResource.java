@@ -43,31 +43,6 @@ public class UserResource {
 	GsonUtils gsUtils; // GsonUtils gsUtils = new GsonUtils();
 
 	@GET // AUTA pou ksekinane me @ einai annotations
-	@Path("/user_password") // Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
-	@Consumes("application/json")
-	@Produces("application/json")
-	public Response user_password(
-			@QueryParam("username") String username,
-			@QueryParam("password") String password) {
-
-		// Το E του response Model είναι μια λίστα απο student , List<Student>
-		ResponseModel<User> rep = new ResponseModel<User>(); // Orismos antikeimenou rep
-		try {
-			User user = userBS.selectUser(username, password,0);
-			// sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
-			rep.setData(user);
-			LOG.info("End all");
-			return Response.ok(rep).build();
-
-		} catch (Exception e) {
-
-			rep.setError(new ErrorHandling(e).getErrorMessage(), Status.INTERNAL_SERVER_ERROR.getStatusCode());
-			return Response.status(Status.INTERNAL_SERVER_ERROR.getStatusCode()).entity(rep).build();
-		}
-	}
-
-	
-	@GET // AUTA pou ksekinane me @ einai annotations
 	@Path("/all") // Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
 	@Consumes("application/json")
 	@Produces("application/json")
@@ -112,7 +87,7 @@ public class UserResource {
 	}
 	
 	@POST // AUTA pou ksekinane me @ einai annotations
-	@Path("/insert") // Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
+	@Path("") // Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Response insert(CreateUserRequest request) {
@@ -156,17 +131,17 @@ public class UserResource {
 	}
 
 	@DELETE // AUTA pou ksekinane me @ einai annotations
-	@Path("/delete") // Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
+	@Path("") // Auta eiai annotations methodou. Mpanoun prin apo ton orismo ths methodou
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response delete(User Users) {
+	public Response delete(List<Integer> userIds) {
 
-		ResponseModel<User> rep = new ResponseModel<User>(); // Orismos antikeimenou rep
+		ResponseModel<List<Integer>> rep = new ResponseModel<List<Integer>>(); // Orismos antikeimenou rep
 		try {
 
-			Users = userBS.delete(Users);
+			userIds = userBS.delete(userIds);
 			// sto antikeimeno rep. 8etoume ta data tou, me thn lista apo mathites.
-			rep.setData(Users);
+			rep.setData(userIds);
 			LOG.info("End all");
 			return Response.ok(rep).build();
 

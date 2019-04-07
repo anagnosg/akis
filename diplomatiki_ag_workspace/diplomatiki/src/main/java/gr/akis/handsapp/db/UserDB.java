@@ -85,7 +85,7 @@ public class UserDB {
 	}
 
 	public User insert(User users) throws SQLException {
-		String sql = "INSERT INTO USERS (USERNAME ,PASSWORD,REGIOD_ID,EMAIL,AGE) " + "VALUES (?,?,?,?,?)";
+		String sql = "INSERT INTO USERS (USERNAME ,PASSWORD,REGION_ID,EMAIL,AGE) " + "VALUES (?,?,?,?,?)";
 		// orismoume se ena string thn sql pou 8a treksoume
 		// Pernoume mia sundesh (connection) me thn bash
 		Connection conn = this.connWrapper.getConnection();
@@ -143,14 +143,14 @@ public class UserDB {
 		return null;
 	}
 
-	public User delete(User users) throws SQLException {
+	public Integer delete(Integer userId) throws SQLException {
 		int count = 0;
 		String sql = "  delete from USERS where id = ?      ";
 		try (PreparedStatement pstate = this.connWrapper.getConnection().prepareStatement(sql);) {
-			pstate.setInt(1, users.getId());
+			pstate.setInt(1, userId);
 			count = pstate.executeUpdate();
 		}
-		return users;
+		return userId;
 	}
 
 	
@@ -179,5 +179,14 @@ public class UserDB {
 			}
 		}
 		return token; 
+	}
+
+	public void deleteTokens(Integer userId) throws SQLException {
+		int count = 0;
+		String sql = "  delete from Tokens where USERID = ?      ";
+		try (PreparedStatement pstate = this.connWrapper.getConnection().prepareStatement(sql);) {
+			pstate.setInt(1, userId);
+			count = pstate.executeUpdate();
+		}
 	}
 }

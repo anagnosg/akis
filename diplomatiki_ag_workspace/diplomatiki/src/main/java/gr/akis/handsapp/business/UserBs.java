@@ -1,6 +1,7 @@
 package gr.akis.handsapp.business;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -24,6 +25,9 @@ public class UserBs {
 	@Inject
 	UserDB userDB;
 
+	public UserBs() {
+	}
+
 	public List<User> selectAll() throws SQLException {
 		List<User> users;
 		users = userDB.selectAll();
@@ -39,18 +43,21 @@ public class UserBs {
 		user.setRegionId(request.getRegionId());
 		return userDB.insert(user);
 	}
-	
-	public Token insertToken(LoginRequest request) throws SQLException,BusinessException {
-		User user = userDB.selectUser(request.getUsername(), request.getPassword(),0);
-		//O xristis ebale sosto username password opote 8a kanoume eggrafi ston token pinaka
-		if(user==null) 
-		{
+
+	public Token insertToken(LoginRequest request) throws SQLException, BusinessException {
+		User user = userDB.selectUser(request.getUsername(), request.getPassword(), 0);
+		// O xristis ebale sosto username password opote 8a kanoume eggrafi ston token
+		// pinaka
+		if (user == null) {
 			throw new BusinessException("Τα στοιχεία που δώσατε δεν είναι σωστά.");
 		}
+		//Delete previous tokens of the user
+		userDB.deleteTokens(user.getId());
+		
 		String tokenString = java.util.UUID.randomUUID().toString();
 		Calendar expire = Calendar.getInstance();
-		expire.add(Calendar.HOUR, 1);//Expires in one hour
-		//Create token and insert it 
+		expire.add(Calendar.HOUR, 1);// Expires in one hour
+		// Create token and insert it
 		Token token = new Token();
 		token.setToken(tokenString);
 		token.setUserId(user.getId());
@@ -58,20 +65,22 @@ public class UserBs {
 		return userDB.insertToken(token);
 	}
 	
-
+	
+	
 	public User update(User users) throws SQLException {
 
 		return userDB.update(users);
 	}
 
-	public User delete(User users) throws SQLException {
-
-		return userDB.delete(users);
+	public List<Integer> delete(List<Integer> userIds) throws SQLException {
+		List<Integer> result = new ArrayList<Integer>();
+		for (int i = 0; i < userIds.size(); i++) {
+			Integer deleted = userDB.delete(userIds.get(i));
+			result.add(deleted);
+		}
+		return result;
 	}
 
-	public UserBs() {
-	}
-	
 	public User selectUser(String username, String password, int userId) throws SQLException {
 		User user = userDB.selectUser(username, password, userId);
 		return user;
