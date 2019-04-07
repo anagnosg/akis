@@ -11,9 +11,8 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import gr.akis.handsapp.models.Team;
 import gr.akis.handsapp.models.Vathmologia;
-import gr.anagnosg.employeeservices.db.utils.ConnectionWrapper;
+import gr.akis.handsapp.utils.ConnectionWrapper;
 
 @RequestScoped
 public class VathmologiaDB {

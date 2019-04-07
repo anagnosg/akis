@@ -12,7 +12,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import gr.akis.handsapp.models.Services;
-import gr.anagnosg.employeeservices.db.utils.ConnectionWrapper;
+import gr.akis.handsapp.utils.ConnectionWrapper;
 
 @RequestScoped
 public class ServicesDb {

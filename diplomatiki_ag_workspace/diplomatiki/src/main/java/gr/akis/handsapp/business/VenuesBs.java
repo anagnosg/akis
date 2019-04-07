@@ -9,7 +9,7 @@ import javax.inject.Inject;
 
 import gr.akis.handsapp.db.VenuesDb;
 import gr.akis.handsapp.models.Venues;
-import gr.anagnosg.employeeservices.db.utils.ConnectionWrapper;
+import gr.akis.handsapp.utils.ConnectionWrapper;
 
 @RequestScoped
 public class VenuesBs {

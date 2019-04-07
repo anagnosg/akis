@@ -13,9 +13,9 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import gr.akis.handsapp.business.VenuesBs;
+import gr.akis.handsapp.models.ResponseModel;
 import gr.akis.handsapp.models.Venues;
-import gr.anagnosg.schoolservices.models.ResponseModel;
-import gr.anagnosg.utis.GsonUtils;
+import gr.akis.handsapp.utils.GsonUtils;
 import io.swagger.annotations.Api;
 
 @ApplicationScoped

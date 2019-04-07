@@ -1,4 +1,4 @@
-package gr.anagnosg.schoolservices.models;
+package gr.akis.handsapp.models;
 
 
 

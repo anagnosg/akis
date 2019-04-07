@@ -8,7 +8,7 @@ import javax.inject.Inject;
 
 import gr.akis.handsapp.db.RegionDb;
 import gr.akis.handsapp.models.Region;
-import gr.anagnosg.employeeservices.db.utils.ConnectionWrapper;
+import gr.akis.handsapp.utils.ConnectionWrapper;
 
 @RequestScoped
 public class RegionBs {

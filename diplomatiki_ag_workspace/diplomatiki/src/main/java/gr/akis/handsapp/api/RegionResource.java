@@ -14,8 +14,8 @@ import javax.ws.rs.core.Response.Status;
 
 import gr.akis.handsapp.business.RegionBs;
 import gr.akis.handsapp.models.Region;
-import gr.anagnosg.schoolservices.models.ResponseModel;
-import gr.anagnosg.utis.GsonUtils;
+import gr.akis.handsapp.models.ResponseModel;
+import gr.akis.handsapp.utils.GsonUtils;
 import io.swagger.annotations.Api;
 
 	 @ApplicationScoped
